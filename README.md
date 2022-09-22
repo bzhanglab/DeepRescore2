@@ -15,6 +15,26 @@
 
 The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
 
+```sh
+ $ nextflow run neoflow_db.nf --help
+N E X T F L O W  ~  version 19.10.0
+Launching `neoflow_db.nf` [irreverent_faggin] - revision: 741bf1a931
+=========================================
+neoflow => variant annotation and customized database construction
+=========================================
+Usage:
+nextflow run neoflow_db.nf
+Arguments:
+  --vcf_file              A txt file contains VCF file(s)
+  --annovar_dir           ANNOVAR folder
+  --protocol              The parameter of "protocol" for ANNOVAR, default is "refGene"
+  --ref_dir               ANNOVAR annotation data folder
+  --ref_ver               The genome version, hg19 or hg38, default is "hg19"
+  --out_dir               Output folder, default is "./output"
+  --cpu                   The number of CPUs
+  --help                  Print help message
+```
+
 #### Step 2: Phosphosite localization using PhosphoRS
 
 #### Step 3: Sequence quality control using PGA
