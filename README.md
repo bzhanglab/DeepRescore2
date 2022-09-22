@@ -11,7 +11,9 @@
 
 
 ## Usage
-#### Step 1: Extract features
+#### Step 1: Extract features from peptide identifications
+
+The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
 
 #### Step 2: Phosphosite localization using PhosphoRS
 
