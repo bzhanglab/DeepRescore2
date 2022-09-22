@@ -11,3 +11,19 @@
 
 ## Usage
 #### Step 1: Extract features
+
+#### Step 2: Phosphosite localization using PhosphoRS
+
+#### Step 3: Sequence quality control using PGA
+
+#### Step 4: Generate train and prediction datasets
+
+#### Step 5: RT prediction using AutoRT
+
+#### Step 6: Spectrum prediction using pDeep3
+
+#### Step 7: Deep-relocalization
+
+#### Step 8: Rescoring using Percolation
+
+#### Step 9: TMT quantification
