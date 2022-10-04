@@ -17,6 +17,7 @@ The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQu
 
 ```sh
  $ sh Features.sh
+ ```
 
 #### Step 2: Phosphosite localization using PhosphoRS
 
