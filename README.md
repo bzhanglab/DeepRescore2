@@ -16,20 +16,7 @@
 The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
 
 ```sh
- $ java -Xmx8g -jar PDV-1.6.1.beta.features-jar-with-dependencies.jar \
-                    -r MSGF.mzid \
-                    -s test.mgf \
-                    -st 1 \
-                    -i * \
-                    -k s \
-                    -o Features \
-                    -a 0.02 \
-                    -c 0 \
-                    -decoy REV_ \
-                    -ft pdf \
-                    --features
-
-$ python AddModifedSequence.py features.txt features.txt
+ $ sh Features.sh
 
 #### Step 2: Phosphosite localization using PhosphoRS
 
