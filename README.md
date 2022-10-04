@@ -17,19 +17,19 @@ The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQu
 
 ```sh
  $ sh Features.sh
- ```
+```
 
 #### Step 2: Phosphosite localization using PhosphoRS
 
 ```sh
  $ sh PhosphoRS.sh
- ```
+```
 
 #### Step 3: Sequence quality control using PGA
 
 ```sh
  $ sh PGA.sh
- ```
+```
 
 #### Step 4: Generate train and prediction datasets
 
