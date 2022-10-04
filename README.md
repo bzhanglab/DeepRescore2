@@ -29,6 +29,8 @@ The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQu
                     -ft pdf \
                     --features
 
+$ python AddModifedSequence.py features.txt features.txt
+
 #### Step 2: Phosphosite localization using PhosphoRS
 
 #### Step 3: Sequence quality control using PGA
