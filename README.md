@@ -21,6 +21,10 @@ The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQu
 
 #### Step 2: Phosphosite localization using PhosphoRS
 
+```sh
+ $ sh PhosphoRS.sh
+ ```
+
 #### Step 3: Sequence quality control using PGA
 
 #### Step 4: Generate train and prediction datasets
