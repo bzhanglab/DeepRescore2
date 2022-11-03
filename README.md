@@ -55,7 +55,7 @@ $ sh pDeep3.sh
 $ sh DeepLocalization.sh
 ```
 
-#### Step 8: Rescoring using Percolation
+#### Step 8: Rescoring using Percolator
 
 ```sh
 $ sh Percolator.sh
