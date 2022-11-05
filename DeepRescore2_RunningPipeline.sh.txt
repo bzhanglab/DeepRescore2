@@ -1,28 +1,28 @@
-## Input
+# Input
+
+## Public params
 
 id_File = "./InputData/combined" // Search engine identifications
 ms_Folder = "./InputData/MGF" // MGF files folder
 ms_File = "./InputData/01CPTAC_UCEC_P_PNNL_20170922_B1S1.mgf" // Merged MGF file
 raw_File = "./InputData/RAW" // RAW file folder
+fasta_File = "./InputData/swiss_prot_human_20190214_target_conts.fasta_td.fasta" // Fasta file
 se = "maxquant" // Search engine type. The current version supports four search engines, msgf, xtandem, comet or maxquant.
 decoy_prefix = "XXX_"
 script_Folder = "sh"
 output_Folder = "./OutputData"
 tmp_Folder = "./tmp"
 
-# Search engine specific params
+## Search engine specific params
+
 if (software == "msgf") {
     rt = 5 // Step 1 parameter
-    Step1Script = ${script_Folder}/AddModifedSequence_MSGF.py
 } else if (software == "xtandem") {
     rt = 2 // Step 1 parameter
-    Step1Script = ${script_Folder}/AddModifedSequence_XTandem.py
 } else if (software == "comet") {
     rt = 2 // Step 1 parameter
-    Step1Script = ${script_Folder}/AddModifedSequence_Comet.py
 } else if (software == "maxquant") {
     rt = 5 // Step 1 parameter
-    Step1Script = ${script_Folder}/AddModifedSequence_MaxQuant.py
 } else {
     println "Search engine ${software} is not supported!\n"
     helpMessage()
@@ -30,9 +30,9 @@ if (software == "msgf") {
 }
 
 
-## Running scripts
+# Running scripts
 
-Step 1: Extract features from peptide identifications: sh 1.Features.sh
+## Step 1: Extract features from peptide identifications: sh 1.Features.sh
 
 java -Xmx200g -jar ${script_Folder}/PDV-1.6.1.beta.features-jar-with-dependencies.jar \
         	  -r ${id_File} \
@@ -48,19 +48,54 @@ java -Xmx200g -jar ${script_Folder}/PDV-1.6.1.beta.features-jar-with-dependencie
         	  -ft pdf \
         	  --feature
 
+python ${script_Folder}/${se}/AddModifedSequence.py ${output_Folder}/features.txt ${ms_File} ${output_Folder}/features.txt
 
-python ${Step1Script} ${output_Folder}/features.txt ${ms_File} ${output_Folder}/features.txt
+## Step 2: Phosphosite localization using PhosphoRS: sh PhosphoRS.sh
 
+mkdir -p ${tmp_Folder}/TXT ${tmp_Folder}/xml ${tmp_Folder}/Results ${tmp_Folder}/Results_AddIsoformSequence
 
+### Step 2.1 Generate PhosphoRS input
 
+python ${script_Folder}/${se}/GeneratePhosphoRSCSVFile.py ${output_Folder}/features.txt ${tmp_Folder}/TXT
+Rscript ${script_Folder}/${se}/generate_phosphoRS_input_xml_folder.R ${tmp_Folder}/TXT ${ms_Folder} ${tmp_Folder}/xml
 
+### Step 2.2 Run PhosphoRS
 
+mono ${script_Folder}/PhosphoRS.exe -i ${tmp_Folder}/data.xml -o ${tmp_Folder}/Results/data.csv // If PhosphoRS can work on Linux
 
+### Step 2.3 Add probability to feature matrix
 
+python ${script_Folder}/${se}/AddIsoformSequenceForPhosphoRSResults.py ${tmp_Folder}/TXT ${tmp_Folder}/Results ${output_Folder}/features.txt ${tmp_Folder}/Results_AddIsoformSequence ${output_Folder}/features2.txt
 
+python ${script_Folder}/${se}/CombinePhosphoRSResults.py ${tmp_Folder}/Results_AddIsoformSequence ${tmp_Folder}/PhosphoRS.txt
 
+Rscript ${script_Folder}/${se}/combine_features_withlocalization.R ${output_Folder}/features2.txt ${tmp_Folder}/PhosphoRS.txt ${output_Folder}/features.PhosphoRS.txt
 
+python ${script_Folder}/${se}/GetPhosphoRSSiteProbability.py ${output_Folder}/features.PhosphoRS.txt ${output_Folder}/features.PhosphoRS.txt
 
+## Step 3: Sequence quality control using PGA: sh PGA.sh
+
+mkdir -p ${tmp_Folder}/peptide_level ${tmp_Folder}/psm_level
+
+docker run -it --rm -u $(id -u):$(id -g) -v .:/opt/ -t proteomics/pga:latest Rscript ${script_Folder}/${se}/got_pga_input.R ${output_Folder}/features.PhosphoRS.txt ${se} ${tmp_Folder}/pga-rawPSMs.txt
+
+docker run -it --rm -u $(id -u):$(id -g) -v .:/opt/ -t proteomics/pga:latest Rscript ${script_Folder}/${se}/calculate_fdr.R ${tmp_Folder} pga ${fasta_File} ${decoy_prefix} FALSE
+
+## Step 4: Generate train and prediction datasets: sh generate_train_prediction.sh
+
+mkdir -p ${tmp_Folder}/autoRT_train ${tmp_Folder}/autoRT_prediction ${tmp_Folder}/pDeep3_train ${tmp_Folder}/pDeep3_prediction
+
+Rscript ${script_Folder}/${se}/got_train_prediction.R ${tmp_Folder}/peptide_level/pga-peptideSummary.txt ${tmp_Folder}/psm_level/pga-peptideSummary.txt ${output_Folder}/features.PhosphoRS.txt ${tmp_Folder}/autoRT_train/ ${tmp_Folder}/autoRT_prediction/ ${tmp_Folder}/pDeep3_train/ ${tmp_Folder}/pDeep3_prediction/ ${tmp_Folder}/pga-rawPSMs.txt ${tmp_Folder}/PhosphoRS.txt
+
+## Step 5: RT prediction using AutoRT: sh AutoRT.sh
+
+mkdir -p ${tmp_Folder}/autoRT_Results ${tmp_Folder}/autoRT_Results/tf_model ${tmp_Folder}/autoRT_Results/tf_prediction
+
+python ${script_Folder}/AutoRT/autort.py train -i ${tmp_Folder}/autoRT_train/auto_rt_train.txt -o ${tmp_Folder}/autoRT_Results/tf_model/ -e 40 -b 64 -u m -m ${script_Folder}/AutoRT/models/ptm_base_model/phosphorylation_sty/model.json -rlr -n 10 -g 6
+
+python ./sh/AutoRT/autort.py predict -t ../Data/tmp/autoRT_prediction/auto_rt_prediction.Phospho.txt -s ../Data/tmp/autoRT_Results/tf_model/model.json -o ../Data/tmp/autoRT_Results/tf_prediction/ -p phospho.prediction
+
+python ./sh/AutoRT/autort.py predict -t ../Data/tmp/autoRT_prediction/auto_rt_prediction.nonPhospho.txt -s ../Data/tmp/autoRT_Results/tf_model/model.json -o ../Data/tmp/autoRT_Results/tf_prediction/ -p nonPhospho.prediction
 
 
 
