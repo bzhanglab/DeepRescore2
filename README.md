@@ -9,6 +9,11 @@
 
 ![DeepRescore2 pipeline](Images/Figure1.png)
 
+## Table of contents:
+* Installation
+* Usage
+* How to cite
+
 
 ## Usage
 #### Step 1: Extract features from peptide identifications
