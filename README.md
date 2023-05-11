@@ -10,10 +10,16 @@
 ![DeepRescore2 pipeline](Images/Figure1.png)
 
 ## Table of contents:
-* Installation
-* Usage
-* How to cite
 
+- [Installation](#installation)
+- [Usage](#Usage)
+- [How to cite](#how-to-cite)
+
+## Installation
+
+#### Download DeepRescore2
+
+#### System requirements
 
 ## Usage
 #### Step 1: Extract features from peptide identifications
