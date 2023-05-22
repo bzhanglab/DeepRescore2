@@ -27,12 +27,12 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 
 * Windows systems
 * python >= 3.5
-* For pDeep3: 
-- tensorflow == 1.13.1 (tensorflow >= 1.13.0, tensorfow 1.x.x is only supported by python <= 3.7)
-- .NET Framework == 4.5.2 (or higher? to execute psmLabel)
 
-* For AutoRT:
-- tensorflow >=**2.6**
+#### Install software
+
+* Install [Docker](https://docs.docker.com/install/) (>=19.03).
+* Install [pDeep3](https://github.com/pFindStudio/pDeep3)
+* Install [AutoRT](https://github.com/bzhanglab/AutoRT)
 
 ## Usage
 #### Step 1: Extract features from peptide identifications
