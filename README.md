@@ -38,7 +38,7 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 #### Step 1: Extract features from peptide identifications
 
 The search engine independent and specific features used in Percolator were extract from peptide identifications. The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
-Open {PATH_TO_CODE}/scripts/Features.sh and change the parameters:
+Open scripts/Features.sh and change the parameters:
 
 ```R
 identificationFile = '{PATH_TO_IDENTIFICATION_FILE}' # Path to the search engine identification file
@@ -53,7 +53,13 @@ sh {PATH_TO_CODE}/scripts/Features.sh
 ```
 
 #### Step 2: Phosphosite localization using PhosphoRS
+Open scripts/PhosphoRS.sh and change the parameters:
 
+```R
+featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
+outputPath = '{OUTPUT_PATH}' # Path to the localization results
+```
+Save and run the script
 ```sh
 $ sh PhosphoRS.sh
 ```
