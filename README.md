@@ -48,8 +48,8 @@ featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
 decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
 ```
 Save and run the script
-```R
-source("{PATH_TO_CODE}/scripts/Features.sh")
+```sh
+sh {PATH_TO_CODE}/scripts/Features.sh
 ```
 
 #### Step 2: Phosphosite localization using PhosphoRS
