@@ -37,7 +37,7 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 ## Usage
 #### Step 1: Extract features from peptide identifications
 
-The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
+The search engine independent and specific features used in Percolator were extract from peptide identifications. The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
 
 ```sh
 $ sh Features.sh
