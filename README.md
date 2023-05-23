@@ -26,6 +26,7 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 #### System requirements
 
 * Windows systems
+* R
 * python >= 3.5
 
 #### Install software
