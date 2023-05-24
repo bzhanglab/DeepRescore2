@@ -16,6 +16,10 @@
 - [How to cite](#how-to-cite)
 
 ## Installation
+DeepRescore2 is built based on python, R and docker on the Windows system. Its dependencies can be installed via
+```shell
+$ pip install -r requirements.txt
+```
 
 #### Download DeepRescore2
 
@@ -26,17 +30,24 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 #### System requirements
 
 * Windows systems
-* Java
-* R
-* python >= 3.5 with pandas module
 
 #### Install software
 
+* Install Java
+* Install R
+* Install python >= 3.5 with pandas module
 * Install [Docker](https://docs.docker.com/install/) (>=19.03).
 * Install [pDeep3](https://github.com/pFindStudio/pDeep3)
 * Install [AutoRT](https://github.com/bzhanglab/AutoRT)
 
+
 ## Usage
+
+The user has to change the DeepRescore2 parameter file named "DeepRescore2.param" before using DeepRescore2. All the parameters are list as follows:
+
+
+
+
 #### Step 1: Extract features from peptide identifications
 
 The search engine independent and specific features used in Percolator were extract from peptide identifications. The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
