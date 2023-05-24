@@ -73,15 +73,34 @@ The PhosphoRS localization results are stored in the tmp directory.
 * tmp/Results
 
 #### Step 3: Sequence quality control using PGA
+PGA R package loading by docker (proteomics/pga) was used to calculate both PSM and peptide level FDR of the search engine identifications.
+Open Script/PGA/Step3.R and change the parameters:
 
-```sh
-$ sh PGA.sh
+```R
+featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
+databasePath = '{PATH_TO_DATABASE}' # Path to the database used for searching
+software = {SOFTWARE} # Four different search engines supported (msgf, comet, xtandem, maxquant)
+decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
+PGAPath = './PGA' # Path to store PGA results
+```
+Save and run the script
+```R
+source("{PATH_TO_CODE}/Script/PGA/Step3.R")
 ```
 
 #### Step 4: Generate train and prediction datasets
+The R environment of PGA docker (proteomics/pga) was used to generate train and prediction data used for both AutoRT and pDeep3.
+Open Script/generate_train_prediction/Step4.R and change the parameters:
 
-```sh
-$ sh generate_train_prediction.sh
+```R
+PGAPath = './PGA' # Path to store PGA results
+featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
+dataPath = './generate_train_prediction'
+```
+
+Save and run the script
+```R
+source("{PATH_TO_CODE}/Script/generate_train_prediction/Step4.R")
 ```
 
 #### Step 5: RT prediction using AutoRT
