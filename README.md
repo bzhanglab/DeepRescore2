@@ -11,9 +11,9 @@
 
 ## Table of contents:
 
-- [Installation](#installation)
+- [Installation](#Installation)
 - [Usage](#Usage)
-- [How to cite](#how-to-cite)
+- [How to cite](#How-to-cite)
 
 ## Installation
 DeepRescore2 is built based on python, R and docker on the Windows system. Its dependencies can be installed via
@@ -66,126 +66,9 @@ optional arguments:
                         Identification file format (mzIdentML: 1, pepXML: 2, proBAM: 3, txt: 4, maxQuant: 5, TIC: 6)
 ```
 
+## Input
 
-#### Step 1: Extract features from peptide identifications
+## Output
 
-The search engine independent and specific features used in Percolator were extract from peptide identifications. The current version supports four search engines, MS-GF+, Comet, X!Tandem, MaxQuant.
-Open Script/Features/Step1.R and change the parameters:
+## How to cite
 
-```R
-identificationFile = '{PATH_TO_IDENTIFICATION_FILE}' # Path to the search engine identification file
-fileFormat = '{FILE_FORMAT}' # Identification file format (mzIdentML: 1, pepXML: 2, proBAM: 3, txt: 4, maxQuant: 5, TIC: 6)
-spectraPath = '{PATH_TO_MGF}' # Path to the MS/MS spectra (MGF) directory
-featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
-tmpPath = './tmp' # Path to store temporary file
-decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
-```
-Save and run the script
-```R
-source("{PATH_TO_CODE}/Script/Features/Step1.R")
-```
-
-#### Step 2: Phosphosite localization using PhosphoRS
-PhosphoRS was used to do phosphosite localization based on search engine identifications. Here we provide a code to transfer search engine identifications into PhosphoRS format and run PhopshoRS command line to do phosphosite localization.
-Open Script/PhosphoRS/Step2.R and change the parameters:
-
-```R
-spectraPath = '{PATH_TO_MGF}' # Path to the MS/MS spectra (MGF) directory
-featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
-phosphoRSResultsPath = '{PATH_TO_PHOSPHORS}' # Path to save PhosphoRS results
-```
-Save and run the script
-```R
-source("{PATH_TO_CODE}/Script/PhosphoRS/Step2.R")
-```
-
-The PhosphoRS localization results are stored in the tmp directory.
-* tmp/Results
-
-#### Step 3: Sequence quality control using PGA
-PGA R package loading by docker (proteomics/pga) was used to calculate both PSM and peptide level FDR of the search engine identifications.
-Open Script/PGA/Step3.R and change the parameters:
-
-```R
-featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
-databasePath = '{PATH_TO_DATABASE}' # Path to the database used for searching
-software = {SOFTWARE} # Four different search engines supported (msgf, comet, xtandem, maxquant)
-decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
-PGAPath = '{PATH_TO_PGA}' # Path to store PGA results
-```
-Save and run the script
-```R
-source("{PATH_TO_CODE}/Script/PGA/Step3.R")
-```
-
-#### Step 4: Generate train and prediction datasets
-The R environment of PGA docker (proteomics/pga) was used to generate train and prediction data used for both AutoRT and pDeep3.
-Open Script/generate_train_prediction/Step4.R and change the parameters:
-
-```R
-PGAPath = '{PATH_TO_PGA}' # Path to store PGA results
-featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
-dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
-```
-
-Save and run the script
-```R
-source("{PATH_TO_CODE}/Script/generate_train_prediction/Step4.R")
-```
-
-#### Step 5: RT prediction using AutoRT
-Use AutoRT to train RT prediction model and to do the RT prediction.
-Open Script/AutoRT/Step5.R and change the parameters:
-
-```R
-dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
-autoRT_resultsPath = '{PATH_TO_AUTORT_RESULTS}' # Path to the AutoRT prediction results
-```
-Save and run the script
-```R
-source("{PATH_TO_CODE}/Script/AutoRT/Step5.R")
-```
-
-#### Step 6: Spectrum prediction using pDeep3
-Use pDeep3 to train spectrum ion intensity prediction model and to do the spectrum ion intensity prediction.
-Open Script/pDeep3/Step6.R and change the parameters:
-
-```R
-dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
-rawSpectraPath = {PATH_TO_RAW_SPECTRA} # Path to the raw spectral files
-tmpPath = './tmp' # Path to store temporary file
-pDeep3_resultsPath = {PATH_TO_PDEEP3_RESULTS} # Path to pDeep3 results file
-```
-
-Save and run the script
-```R
-source("{PATH_TO_CODE}/Script/pDeep3/Step6.R")
-```
-
-#### Step 7: Deep-relocalization
-Combine deeplearning derived features (RT ratio and Spectrum similarity) with PhosphoRS localization probability to relocalization.
-Open Script/DeepRelocalization/Step7.R and change the parameters:
-
-```R
-phosphoRSResultsPath = '{PATH_TO_PHOSPHORS}' # Path to save PhosphoRS results
-autoRT_resultsPath = '{PATH_TO_AUTORT_RESULTS}' # Path to the AutoRT prediction results
-pDeep3_resultsPath = {PATH_TO_PDEEP3_RESULTS} # Path to pDeep3 results file
-featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
-```
-
-Save and run the script
-```R
-source("{PATH_TO_CODE}/Script/DeepRelocalization/Step7.R")
-```
-
-#### Step 8: Rescoring using Percolator
-
-```sh
-$ sh Percolator.sh
-```
-
-#### Step 9: TMT quantification
-
-```sh
-$ sh TMTQuantification.sh
-```
