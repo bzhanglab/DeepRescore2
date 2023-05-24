@@ -95,7 +95,7 @@ Open Script/generate_train_prediction/Step4.R and change the parameters:
 ```R
 PGAPath = './PGA' # Path to store PGA results
 featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
-dataPath = './generate_train_prediction'
+dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
 ```
 
 Save and run the script
@@ -104,15 +104,32 @@ source("{PATH_TO_CODE}/Script/generate_train_prediction/Step4.R")
 ```
 
 #### Step 5: RT prediction using AutoRT
+Use AutoRT to train RT prediction model and to do the RT prediction.
+Open Script/AutoRT/Step5.R and change the parameters:
 
-```sh
-$ sh AutoRT.sh
+```R
+dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
+autoRT_resultsPath = '{PATH_TO_AUTORT_RESULTS}' # Path to the AutoRT prediction results
+```
+Save and run the script
+```R
+source("{PATH_TO_CODE}/Script/AutoRT/Step5.R")
 ```
 
 #### Step 6: Spectrum prediction using pDeep3
+Use pDeep3 to train spectrum ion intensity prediction model and to do the spectrum ion intensity prediction.
+Open Script/pDeep3/Step6.R and change the parameters:
 
-```sh
-$ sh pDeep3.sh
+```R
+dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
+rawSpectraPath = {PATH_TO_RAW_SPECTRA} # Path to the raw spectral files
+tmpPath = './tmp' # Path to store temporary file
+pDeep3_resultsPath = {PDEEP3_RESULTS_PATH} # Path to pDeep3 results file
+```
+
+Save and run the script
+```R
+source("{PATH_TO_CODE}/Script/pDeep3/Step6.R")
 ```
 
 #### Step 7: Deep-relocalization
