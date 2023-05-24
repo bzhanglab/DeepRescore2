@@ -56,6 +56,7 @@ source("{PATH_TO_CODE}/Script/Features/Step1.R")
 ```
 
 #### Step 2: Phosphosite localization using PhosphoRS
+PhosphoRS was used to do phosphosite localization based on search engine identifications. Here we provide a code to transfer search engine identifications into PhosphoRS format and run PhopshoRS command line to do phosphosite localization.
 Open Script/PhosphoRS/Step2.R and change the parameters:
 
 ```R
@@ -67,6 +68,9 @@ Save and run the script
 ```R
 source("{PATH_TO_CODE}/Script/PhosphoRS/Step2.R")
 ```
+
+The PhosphoRS localization results are stored in the tmp directory.
+* tmp/Results
 
 #### Step 3: Sequence quality control using PGA
 
