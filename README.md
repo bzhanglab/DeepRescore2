@@ -62,7 +62,7 @@ Open Script/PhosphoRS/Step2.R and change the parameters:
 ```R
 spectraPath = '{PATH_TO_MGF}' # Path to the MS/MS spectra (MGF) directory
 featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
-tmpPath = './tmp' # Path to store temporary file
+phosphoRSResultsPath = '{PATH_TO_PHOSPHORS}' # Path to save PhosphoRS results
 ```
 Save and run the script
 ```R
@@ -81,7 +81,7 @@ featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
 databasePath = '{PATH_TO_DATABASE}' # Path to the database used for searching
 software = {SOFTWARE} # Four different search engines supported (msgf, comet, xtandem, maxquant)
 decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
-PGAPath = './PGA' # Path to store PGA results
+PGAPath = '{PATH_TO_PGA}' # Path to store PGA results
 ```
 Save and run the script
 ```R
@@ -93,7 +93,7 @@ The R environment of PGA docker (proteomics/pga) was used to generate train and 
 Open Script/generate_train_prediction/Step4.R and change the parameters:
 
 ```R
-PGAPath = './PGA' # Path to store PGA results
+PGAPath = '{PATH_TO_PGA}' # Path to store PGA results
 featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
 dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
 ```
@@ -124,7 +124,7 @@ Open Script/pDeep3/Step6.R and change the parameters:
 dataPath = '{PATH_TO_TRAIN_PREDICTION}' # Path to the train and prediction data used for both AutoRT and pDeep3
 rawSpectraPath = {PATH_TO_RAW_SPECTRA} # Path to the raw spectral files
 tmpPath = './tmp' # Path to store temporary file
-pDeep3_resultsPath = {PDEEP3_RESULTS_PATH} # Path to pDeep3 results file
+pDeep3_resultsPath = {PATH_TO_PDEEP3_RESULTS} # Path to pDeep3 results file
 ```
 
 Save and run the script
@@ -133,9 +133,19 @@ source("{PATH_TO_CODE}/Script/pDeep3/Step6.R")
 ```
 
 #### Step 7: Deep-relocalization
+Combine deeplearning derived features (RT ratio and Spectrum similarity) with PhosphoRS localization probability to relocalization.
+Open Script/DeepRelocalization/Step7.R and change the parameters:
 
-```sh
-$ sh DeepLocalization.sh
+```R
+phosphoRSResultsPath = '{PATH_TO_PHOSPHORS}' # Path to save PhosphoRS results
+autoRT_resultsPath = '{PATH_TO_AUTORT_RESULTS}' # Path to the AutoRT prediction results
+pDeep3_resultsPath = {PATH_TO_PDEEP3_RESULTS} # Path to pDeep3 results file
+featurePath = '{PATH_TO_FEATURE}' # Path to the generated feature file
+```
+
+Save and run the script
+```R
+source("{PATH_TO_CODE}/Script/DeepRelocalization/Step7.R")
 ```
 
 #### Step 8: Rescoring using Percolator
