@@ -34,7 +34,7 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 #### Install software
 
 * Install Java
-* Install R with [PGA](https://github.com/wenbostar/PGA), [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html) package installed.
+* Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html) package installed.
 * Install python >= 3.5 with pandas module
 * Install [Docker](https://docs.docker.com/install/) (>=19.03).
 * Install [pDeep3](https://github.com/pFindStudio/pDeep3) under conda environment named 'pDeep3'.
