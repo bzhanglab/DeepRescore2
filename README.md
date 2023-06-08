@@ -63,9 +63,11 @@ FixedMods = '{Fix_MOD}' # Fixed modifications used for searching, e.g. '5,Carbam
 ModsReplace = '{RENAME_MOD}' # Some modifications need to rename, e.g. '\\[79.966331\\],Phospho'. If null, use 'null'
 ```
 
-## Input
+## Generate feature matrix as input
 
 ## Output
+
+## Quantification for TMT dataset
 
 ## How to cite
 
