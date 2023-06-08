@@ -48,6 +48,8 @@ The user has to edit the DeepRescore2 parameter file named "DeepRescore2.param" 
 Rscript DeepRescore2.R DeepRescore2.param
 ```
 
+For the three test datasets, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, we prepared three parameters, respectively. Please check the 'ExampleData' folder.
+
 All the parameters are list as follows:
 ```R
 decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
