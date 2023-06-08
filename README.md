@@ -43,13 +43,15 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 
 ## Usage
 
-The user has to change the DeepRescore2 parameter file named "DeepRescore2.param" before using DeepRescore2. All the parameters are list as follows:
+The user has to edit the DeepRescore2 parameter file named "DeepRescore2.param" before using DeepRescore2. The command line to run DeepRescore2 is:
 ```R
-Rscript DeepRescore2.R -h
-optional arguments:
--h, --help            show this help message and exit
--i IDENTIFICATION, --identification IDENTIFICATION
-                        Path to the search engine identification file
+Rscript DeepRescore2.R DeepRescore2.param
+```
+
+All the parameters are list as follows:
+```R
+decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
+                        
 -o OUT_DIR, --out_dir OUT_DIR
                         Output directory
 -r RAW_DIR, --raw_dir RAW_DIR
