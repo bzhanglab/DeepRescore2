@@ -50,7 +50,9 @@ Rscript DeepRescore2.R DeepRescore2.param
 
 All the parameters are list as follows:
 ```R
-decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
+decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_.
+searchEngine = '{SEARCH_ENGINE}' # four search engines, msgf, comet, xtandem, maxquant, are supported.
+
                         
 -o OUT_DIR, --out_dir OUT_DIR
                         Output directory
