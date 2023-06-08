@@ -50,24 +50,17 @@ Rscript DeepRescore2.R DeepRescore2.param
 
 All the parameters are list as follows:
 ```R
-decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_.
-searchEngine = '{SEARCH_ENGINE}' # four search engines, msgf, comet, xtandem, maxquant, are supported.
-
-                        
--o OUT_DIR, --out_dir OUT_DIR
-                        Output directory
--r RAW_DIR, --raw_dir RAW_DIR
-                        Path to the MS/MS spectra (RAW) directory
--m MGF_DIR ---mgf_dir MGF_DIR
-                        Path to the MS/MS spectra (MGF) directory
--db DATABASE --database DATABASE
-                        Path to the database used for searching
--dp DECOY_PREFIX --decoy_prefix DECOY_PREFIX
-                        Decoy prefix used for searching. Default is XXX_
--s SEARCH_ENGINE --search_engine SEARCH_ENGINE
-                        msgf, comet, xtandem, maxquant
--f FILE_FORMAT --file_format FILE_FORMAT
-                        Identification file format (mzIdentML: 1, pepXML: 2, proBAM: 3, txt: 4, maxQuant: 5, TIC: 6)
+decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
+searchEngine = '{SEARCH_ENGINE}' # four search engines, msgf, comet, xtandem, maxquant, are supported
+inputPath = {INPUT_DIR} # Input directory including all the input files: MS/MS spectra (RAW and MGF), feature matrix, database
+rawSpectraPath = {RAW_DIR} # Path to the MS/MS spectra (RAW) directory
+spectraPath = {MGF_DIR} # Path to the MS/MS spectra (MGF) directory
+databasePath = {DATABASE_DIR} # Path to the database used for searching
+inputFeaturePath = {FEATURE_DIR} # Path to the feature matrix
+outputPath = '{OUT_DIR}' # Output directory
+VariableMods = '{VAR_MOD}' # Variable modifications used for searching, e.g. '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2'
+FixedMods = '{Fix_MOD}' # Fixed modifications used for searching, e.g. '5,Carbamidomethyl,C,57.021464,3'. If null, use 'null'
+ModsReplace = {RENAME_MOD} # Some modifications need to rename, e.g. '\\[79.966331\\],Phospho'. If null, use 'null'
 ```
 
 ## Input
