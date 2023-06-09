@@ -49,7 +49,7 @@ The user has to edit the DeepRescore2 parameter file named "DeepRescore2.param" 
 Rscript DeepRescore2.R DeepRescore2.param
 ```
 
-The parameter file are as follows (Please change the 'Value' column based on your data):
+Each column of the parameter file is described as follows (Please change the 'Value' column based on your data):
 | Name  | Value | Description |
 | -------------  | ------------- | ------------- |
 | DeepRescore2Path  | DEEPRESCORE2_DIR  | DeepRescore2 directory |
