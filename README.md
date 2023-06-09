@@ -50,10 +50,10 @@ Rscript DeepRescore2.R DeepRescore2.param
 ```
 
 The parameter file are as follows (Please change the 'Value' column based on your data):
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Name  | Value |
+| -------------  | ------------- |
+| DeepRescore2Path  | DEEPRESCORE2_DIR  |
+| javaPath  | JAVA_DIR  |
 
 
 ```R
