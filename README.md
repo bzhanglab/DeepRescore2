@@ -50,22 +50,22 @@ Rscript DeepRescore2.R DeepRescore2.param
 ```
 
 The parameter file are as follows (Please change the 'Value' column based on your data):
-| Name  | Value |
-| -------------  | ------------- |
-| DeepRescore2Path  | DEEPRESCORE2_DIR  |
-| javaPath  | JAVA_DIR  |
-| pythonPath  | PYTHON_DIR  |
-| decoyPrefix  | DECOY_PREFIX  |
-| searchEngine  | SEARCH_ENGINE  |
-| inputPath  | INPUT_DIR  |
-| rawSpectraPath  | RAW_DIR  |
-| spectraPath  | MGF_DIR  |
-| databasePath  | DATABASE_DIR  |
-| inputFeaturePath  | FEATURE_DIR  |
-| outputPath  | OUT_DIR  |
-| VariableMods  | VAR_MOD  |
-| FixedMods  | Fix_MOD  |
-| ModsReplace  | RENAME_MOD  |
+| Name  | Value | Description |
+| -------------  | ------------- | ------------- |
+| DeepRescore2Path  | DEEPRESCORE2_DIR  | DeepRescore2 directory |
+| javaPath  | JAVA_DIR  | Java directory |
+| pythonPath  | PYTHON_DIR  | Python directory |
+| decoyPrefix  | DECOY_PREFIX  | Decoy prefix used for searching. Default is XXX_ |
+| searchEngine  | SEARCH_ENGINE  | Four search engines, msgf, comet, xtandem, maxquant, are supported |
+| inputPath  | INPUT_DIR  | Input directory including all the input files |
+| rawSpectraPath  | RAW_DIR  | Path to the MS/MS spectra (RAW) directory |
+| spectraPath  | MGF_DIR  | Path to the MS/MS spectra (MGF) directory |
+| databasePath  | DATABASE_DIR  | Path to the database used for searching |
+| inputFeaturePath  | FEATURE_DIR  | Path to the feature matrix |
+| outputPath  | OUT_DIR  | Output directory |
+| VariableMods  | VAR_MOD  | Variable modifications used for searching |
+| FixedMods  | Fix_MOD  | Fixed modifications used for searching |
+| ModsReplace  | RENAME_MOD  | Some modifications need to rename |
 
 
 ```R
