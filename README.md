@@ -44,13 +44,18 @@ $ git clone https://github.com/bzhanglab/DeepRescore2
 ## Usage
 
 The user has to edit the DeepRescore2 parameter file named "DeepRescore2.param" before using DeepRescore2. The command line to run DeepRescore2 is:
+
 ```R
 Rscript DeepRescore2.R DeepRescore2.param
 ```
 
-For the three test datasets, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, we prepared three parameters, respectively. Please check the 'ExampleData' folder.
+The parameter file are as follows (Please change the 'Value' column based on your data):
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
-All the parameters are list as follows:
+
 ```R
 decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
 searchEngine = '{SEARCH_ENGINE}' # four search engines, msgf, comet, xtandem, maxquant, are supported
@@ -64,6 +69,7 @@ VariableMods = '{VAR_MOD}' # Variable modifications used for searching, e.g. '1,
 FixedMods = '{Fix_MOD}' # Fixed modifications used for searching, e.g. '5,Carbamidomethyl,C,57.021464,3'. If null, use 'null'
 ModsReplace = '{RENAME_MOD}' # Some modifications need to rename, e.g. '\\[79.966331\\],Phospho'. If null, use 'null'
 ```
+As a reference, we prepared three parameters for the three test datasets used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
 
 ## Generate feature matrix as input
 
