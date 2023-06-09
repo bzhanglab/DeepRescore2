@@ -54,6 +54,18 @@ The parameter file are as follows (Please change the 'Value' column based on you
 | -------------  | ------------- |
 | DeepRescore2Path  | DEEPRESCORE2_DIR  |
 | javaPath  | JAVA_DIR  |
+| pythonPath  | PYTHON_DIR  |
+| decoyPrefix  | DECOY_PREFIX  |
+| searchEngine  | SEARCH_ENGINE  |
+| inputPath  | INPUT_DIR  |
+| rawSpectraPath  | RAW_DIR  |
+| spectraPath  | MGF_DIR  |
+| databasePath  | DATABASE_DIR  |
+| inputFeaturePath  | FEATURE_DIR  |
+| outputPath  | OUT_DIR  |
+| VariableMods  | VAR_MOD  |
+| FixedMods  | Fix_MOD  |
+| ModsReplace  | RENAME_MOD  |
 
 
 ```R
