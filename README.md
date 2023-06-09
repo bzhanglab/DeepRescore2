@@ -63,24 +63,10 @@ The parameter file are as follows (Please change the 'Value' column based on you
 | databasePath  | DATABASE_DIR  | Path to the database used for searching |
 | inputFeaturePath  | FEATURE_DIR  | Path to the feature matrix |
 | outputPath  | OUT_DIR  | Output directory |
-| VariableMods  | VAR_MOD  | Variable modifications used for searching |
-| FixedMods  | Fix_MOD  | Fixed modifications used for searching |
+| VariableMods  | VAR_MOD  | Variable modifications used for searching, e.g. '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2' |
+| FixedMods  | Fix_MOD  | Fixed modifications used for searching, e.g. '5,Carbamidomethyl,C,57.021464,3'. If null, use 'null' |
 | ModsReplace  | RENAME_MOD  | Some modifications need to rename, e.g. '\\[79.966331\\],Phospho'. If null, use 'null' |
 
-
-```R
-decoyPrefix = '{DECOY_PREFIX}' # Decoy prefix used for searching. Default is XXX_
-searchEngine = '{SEARCH_ENGINE}' # four search engines, msgf, comet, xtandem, maxquant, are supported
-inputPath = '{INPUT_DIR}' # Input directory including all the input files: MS/MS spectra (RAW and MGF), feature matrix, database
-rawSpectraPath = '{RAW_DIR}' # Path to the MS/MS spectra (RAW) directory
-spectraPath = '{MGF_DIR}' # Path to the MS/MS spectra (MGF) directory
-databasePath = '{DATABASE_DIR}' # Path to the database used for searching
-inputFeaturePath = '{FEATURE_DIR}' # Path to the feature matrix
-outputPath = '{OUT_DIR}' # Output directory
-VariableMods = '{VAR_MOD}' # Variable modifications used for searching, e.g. '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2'
-FixedMods = '{Fix_MOD}' # Fixed modifications used for searching, e.g. '5,Carbamidomethyl,C,57.021464,3'. If null, use 'null'
-ModsReplace = '{RENAME_MOD}' # Some modifications need to rename, e.g. '\\[79.966331\\],Phospho'. If null, use 'null'
-```
 As a reference, we prepared three parameters for the three test datasets used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
 
 ## Generate feature matrix as input
