@@ -21,8 +21,8 @@ DeepRescore2 is built based on python, R and docker on the Windows system.
 * Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html) package installed.
 * Install python >= 3.5 with pandas module
 * Install [Docker](https://docs.docker.com/install/) (>=19.03).
-* Install [pDeep3](https://github.com/pFindStudio/pDeep3) under conda environment named 'pDeep3'. The tensorflow version is 1.13.1.
-* Install [AutoRT](https://github.com/bzhanglab/AutoRT). The tensorflow version is 2.6.0.
+* Install [pDeep3](https://github.com/pFindStudio/pDeep3) under conda environment named 'pDeep3'. Tensorflow version 1.13.1 is required.
+* Install [AutoRT](https://github.com/bzhanglab/AutoRT). Tensorflow version 2.6.0 is required.
 
 #### Download DeepRescore2
 
