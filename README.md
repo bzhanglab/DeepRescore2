@@ -65,7 +65,7 @@ The parameter file are as follows (Please change the 'Value' column based on you
 | outputPath  | OUT_DIR  | Output directory |
 | VariableMods  | VAR_MOD  | Variable modifications used for searching |
 | FixedMods  | Fix_MOD  | Fixed modifications used for searching |
-| ModsReplace  | RENAME_MOD  | Some modifications need to rename |
+| ModsReplace  | RENAME_MOD  | Some modifications need to rename, e.g. '\\[79.966331\\],Phospho'. If null, use 'null' |
 
 
 ```R
