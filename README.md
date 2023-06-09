@@ -67,7 +67,7 @@ Each column of the parameter file is described as follows (Please change the 'Va
 | FixedMods  | Fix_MOD  | Fixed modifications used for searching, e.g. '5,Carbamidomethyl,C,57.021464,3'. If null, use 'null' |
 | ModsReplace  | RENAME_MOD  | Some modifications need to rename, e.g. '\\[79.966331\\],Phospho'. If null, use 'null' |
 
-As a reference, we prepared three parameters for the three test datasets used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
+As a reference, we prepared three parameters for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
 
 ## Generate feature matrix as input
 
