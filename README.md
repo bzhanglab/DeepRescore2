@@ -7,7 +7,7 @@
 
 ## Pipeline
 
-![DeepRescore2 pipeline](Images/Figure1.png)
+![DeepRescore2 pipeline](Images/Pipeline.jpg)
 
 ## Table of contents:
 
