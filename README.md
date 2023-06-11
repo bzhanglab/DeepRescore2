@@ -131,6 +131,19 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>Ln_expect</td>
     <td>Comet  Evalue, natural logarithm transformed</td>
   </tr>
+  <tr>
+    <td rowspan="3">SE specific features (MaxQuant (v1.6.5.0))</td>
+    <td>Score</td>
+    <td>Andromeda score</td>
+  </tr>
+  <tr>
+    <td>Ln-PEP</td>
+    <td>Posterior Error Probability of the identification, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>Delta_Score</td>
+    <td>Score difference to the second best identified peptide</td>
+  </tr>
 </table>
 
 
