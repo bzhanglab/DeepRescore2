@@ -63,7 +63,45 @@ Each column of the parameter file is described as follows (Please change the 'Va
 As a reference, we prepared three parameters for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
 
 ## Generate feature matrix as input
-For each search please prepare a feature matrix as input. Here is the format for the four search engines we used.
+Please prepare a feature matrix including all the necessary information as input. 
+
+| Feature groups  | Feature name  | Feature description |
+| -------------  | ------------- | ------------- |
+| Features based on DL  | Feature name  | Feature description |
+
+
+<table>
+  <tr>
+    <th rowspan="2">Name</th>
+    <th>Day</th>
+    <th>Month</th>
+  </tr>
+  <tr>
+    <td>Monday</td>
+    <td>January</td>
+  </tr>
+  <tr>
+    <td rowspan="2">John Doe</td>
+    <td>Tuesday</td>
+    <td>February</td>
+  </tr>
+  <tr>
+    <td>Wednesday</td>
+    <td>March</td>
+  </tr>
+</table>
+
+
+Here is the format for the four search engines we used.
+
+#### MS-GF+ (v2019.02.28)
+
+#### Comet (2018.01 rev.4)
+
+#### X!Tandem (v2017.2.1.2)
+
+#### MaxQuant (v1.6.5.0)
+
 
 ## Output
 
