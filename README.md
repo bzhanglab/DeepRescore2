@@ -72,22 +72,18 @@ Please prepare a feature matrix including all the necessary information as input
 
 <table>
   <tr>
-    <th rowspan="2">Name</th>
-    <th>Day</th>
-    <th>Month</th>
+    <th rowspan="1">Feature groups</th>
+    <th>Feature name</th>
+    <th>Feature description</th>
   </tr>
   <tr>
-    <td>Monday</td>
-    <td>January</td>
+    <td rowspan="2">Features based on DL</td>
+    <td>RT Ratio</td>
+    <td>RT ratio  between observed RT and predicted RT</td>
   </tr>
   <tr>
-    <td rowspan="2">John Doe</td>
-    <td>Tuesday</td>
-    <td>February</td>
-  </tr>
-  <tr>
-    <td>Wednesday</td>
-    <td>March</td>
+    <td>Spectrum similarity</td>
+    <td>The spectral similarity characterized by entropy distance between predicted MS/MS spectrum and experimental MS/MS spectrum of a peptide</td>
   </tr>
 </table>
 
