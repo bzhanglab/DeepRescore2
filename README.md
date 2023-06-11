@@ -18,7 +18,7 @@
 ## Installation
 DeepRescore2 is built based on python, R and docker on the Windows system. 
 * Install Java
-* Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html) package installed.
+* Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html), [data.table](https://cran.r-project.org/web/packages/data.table/index.html) package installed.
 * Install python >= 3.5 with pandas module
 * Install [Docker](https://docs.docker.com/install/) (>=19.03).
 * Install [pDeep3](https://github.com/pFindStudio/pDeep3) under conda environment named 'pDeep3'. Tensorflow version 1.13.1 is required.
@@ -193,9 +193,18 @@ java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-wi
 
 ## Output
 
+DeepRescore2 will output each step results, including
+* Features
+* PhosphoRS
+* PGA
+* generate_train_prediction
+* autoRT_Results
+* pDeep3_Results
+* Percolator
 
-
-
+DeepRescore2 also output two tables as the final results: 
+* File named 'Method1Results.txt' which is filtered using both PGA FDR < 1% and PhosphoRS localization probability > 0.75.
+* File named 'DeepRescore2Results.txt' which is filtered using both q-value < 1% and DeepLocalization probability > 0.75.
 
 ## Quantification for TMT dataset
 
