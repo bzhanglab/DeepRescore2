@@ -63,12 +63,8 @@ Each column of the parameter file is described as follows (Please change the 'Va
 As a reference, we prepared three parameters for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
 
 ## Generate feature matrix as input
-Please prepare a feature matrix including all the necessary information as input. 
 
-| Feature groups  | Feature name  | Feature description |
-| -------------  | ------------- | ------------- |
-| Features based on DL  | Feature name  | Feature description |
-
+Please prepare a feature matrix including all the necessary features as follows:
 
 <table>
   <tr>
@@ -84,6 +80,35 @@ Please prepare a feature matrix including all the necessary information as input
   <tr>
     <td>Spectrum similarity</td>
     <td>The spectral similarity characterized by entropy distance between predicted MS/MS spectrum and experimental MS/MS spectrum of a peptide</td>
+  </tr>
+  <tr>
+    <td rowspan="7">SE independent features</td>
+    <td>Mass_Error</td>
+    <td>Difference between theoretical and experimental mass</td>
+  </tr>
+  <tr>
+    <td>Charge</td>
+    <td>Peptide charge</td>
+  </tr>
+  <tr>
+    <td>Abs_Mass_Error</td>
+    <td>Absolute value of the difference between theoretical and experimental mass</td>
+  </tr>
+  <tr>
+    <td>Ln_Total_Intensity</td>
+    <td>Total intensity, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>Match_Ions_Intensity</td>
+    <td>Total intensity of matched ions, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>Max_Match_Ion_Intensity</td>
+    <td>Max intensity of matched fragment ions</td>
+  </tr>
+  <tr>
+    <td>Rel_Match_Ions_Intensity</td>
+    <td>The total intensity of all matched ions divided by the total intensity of the spectrum</td>
   </tr>
 </table>
 
