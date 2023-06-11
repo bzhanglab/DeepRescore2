@@ -175,19 +175,6 @@ Please prepare a feature matrix including all the necessary features as follows:
 We used PDV (PDV-1.6.1.beta.features-jar-with-dependencies.jar) attached under the 'Script/GenerateFeatureMatrix' folder to generate feature matrix. The script to run this jar file based on the Comet (2018.01 rev.4) identifications is as follows:
 
 ```sh
-nextflow run DeepRescore.nf --id_file ./example_data/A1101.pep.xml \
-	--ms_file ./example_data/A1101.mgf \
-	--se comet \
-	--ms_instrument Lumos \
-	--ms_energy 0.34 \
-	--out_dir out \
-	--prefix d2 \
-	--decoy_prefix XXX_ \
-	--cpu 4 \
-	--mem 8
-```
-
-```sh
 java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-with-dependencies.jar \
 	-r ./ExampleData/PXD023665/Comet.pep.xml \
 	-rt 2 \
