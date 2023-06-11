@@ -1,1 +1,0 @@
-phosphoRS-cli/phosphoRS.exe -i PhosphoRS_TestData/20180320_fusion_zhw_TMT10_liver01_pho_F01.xml -o PhosphoRS_TestData/20180320_fusion_zhw_TMT10_liver01_pho_F01.xml
