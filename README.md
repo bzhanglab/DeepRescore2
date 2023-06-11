@@ -110,6 +110,16 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>Rel_Match_Ions_Intensity</td>
     <td>The total intensity of all matched ions divided by the total intensity of the spectrum</td>
   </tr>
+  <tr>
+    <td rowspan="2">SE specific features</td>
+    <td rowspan="2">Comet</td>
+    <td>xcorr</td>
+    <td>Cross-correlation of the experimental and theoretical spectra</td>
+  </tr>
+  <tr>
+    <td>deltacn</td>
+    <td>The normalized difference of XCorr values between the best sequence and the next best sequence</td>
+  </tr>
 </table>
 
 
