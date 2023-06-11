@@ -111,7 +111,7 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>The total intensity of all matched ions divided by the total intensity of the spectrum</td>
   </tr>
   <tr>
-    <td rowspan="2">SE specific features</td>
+    <td rowspan="2">SE specific features (Comet (2018.01 rev.4))</td>
     <td>xcorr</td>
     <td>Cross-correlation of the experimental and theoretical spectra</td>
   </tr>
