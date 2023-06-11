@@ -178,7 +178,7 @@ We used PDV (PDV-1.6.1.beta.features-jar-with-dependencies.jar) attached under t
 java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-with-dependencies.jar \
 	-r ./ExampleData/PXD023665/Comet.pep.xml \
 	-rt 2 \
-	-s ./ExampleData/QE3_191209_OPL1025_FR_U2OS_TiOx_A_B_C.mgf \
+	-s ./ExampleData/Combined.mgf \
 	-st 1 \
 	-i * \
 	-k s \
@@ -192,6 +192,10 @@ java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-wi
 ```
 
 ## Output
+
+
+
+
 
 ## Quantification for TMT dataset
 
