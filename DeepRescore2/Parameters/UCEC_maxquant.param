@@ -1,0 +1,15 @@
+Name	Value
+DeepRescore2Path	F:\xyi\deeprescore2\BuildPipeline\DeepRescore2
+javaPath	java
+pythonPath	python
+decoyPrefix	XXX_
+searchEngine	maxquant
+inputPath	F:/xyi/deeprescore2/BuildPipeline/DeepRescore2/ExampleData/UCEC
+rawSpectraPath	F:/xyi/deeprescore2/BuildPipeline/DeepRescore2/ExampleData/UCEC/RAW
+spectraPath	F:/xyi/deeprescore2/BuildPipeline/DeepRescore2/ExampleData/UCEC/MGF
+databasePath	F:/xyi/deeprescore2/BuildPipeline/DeepRescore2/ExampleData/UCEC/Database/swiss_prot_human_20190214_target_conts.fasta_td.fasta
+inputFeaturePath	F:/xyi/deeprescore2/BuildPipeline/DeepRescore2/ExampleData/UCEC/features_maxquant.txt
+outputPath	F:/xyi/deeprescore2/BuildPipeline/UCEC_maxquant
+VariableMods	1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2
+FixedMods	5,Carbamidomethyl,C,57.021464,3;6,TMT6plex,K,229.162932,4;7,TMT6plex,AnyN-term,229.162932,5
+ModsReplace	TMT 10-plex,TMT6plex;peptide N-term,AnyN-term
