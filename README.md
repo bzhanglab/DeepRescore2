@@ -172,6 +172,8 @@ Please prepare a feature matrix including all the necessary features as follows:
   </tr>
 </table>
 
+We used PDV (PDV-1.6.1.beta.features-jar-with-dependencies.jar) attached under the Script/GenerateFeatureMatrix folder to generate feature matrix. The script to run this jar file is as follows:
+
 ## Output
 
 ## Quantification for TMT dataset
