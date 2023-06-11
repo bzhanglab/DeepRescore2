@@ -191,9 +191,11 @@ java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-wi
 
 ```
 
+As a reference, we uploaded all the input data used in our manuscript, including two label free datasets (PRIDE ID: PXD000138 and PXD023665) and one TMT datasets (UCEC) into the zenodo website under the [ExampleData]() folder.
+
 ## Output
 
-DeepRescore2 will output each step results, including
+DeepRescore2 will output results of each step, including
 * Features
 * PhosphoRS
 * PGA
