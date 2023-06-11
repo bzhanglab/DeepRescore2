@@ -73,7 +73,7 @@ Please prepare a feature matrix including all the necessary features as follows:
     <th>Feature description</th>
   </tr>
   <tr>
-    <td rowspan="2">Features based on DL</td>
+    <td rowspan="2">Features based on deep learning</td>
     <td>RT Ratio</td>
     <td>RT ratio  between observed RT and predicted RT</td>
   </tr>
@@ -82,7 +82,7 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>The spectral similarity characterized by entropy distance between predicted MS/MS spectrum and experimental MS/MS spectrum of a peptide</td>
   </tr>
   <tr>
-    <td rowspan="7">SE independent features</td>
+    <td rowspan="7">Search engine independent features</td>
     <td>Mass_Error</td>
     <td>Difference between theoretical and experimental mass</td>
   </tr>
@@ -111,7 +111,7 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>The total intensity of all matched ions divided by the total intensity of the spectrum</td>
   </tr>
   <tr>
-    <td rowspan="5">SE specific features (Comet (2018.01 rev.4))</td>
+    <td rowspan="5">Search engine specific features (Comet (2018.01 rev.4))</td>
     <td>xcorr</td>
     <td>Cross-correlation of the experimental and theoretical spectra</td>
   </tr>
@@ -132,7 +132,7 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>Comet  Evalue, natural logarithm transformed</td>
   </tr>
   <tr>
-    <td rowspan="3">SE specific features (MaxQuant (v1.6.5.0))</td>
+    <td rowspan="3">Search engine specific features (MaxQuant (v1.6.5.0))</td>
     <td>Score</td>
     <td>Andromeda score</td>
   </tr>
@@ -145,7 +145,7 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>Score difference to the second best identified peptide</td>
   </tr>
   <tr>
-    <td rowspan="4">SE specific features (MS-GF+ (v2019.02.28))</td>
+    <td rowspan="4">Search engine specific features (MS-GF+ (v2019.02.28))</td>
     <td>MS-GF:RawScore</td>
     <td>Raw match score of MS-GF+</td>
   </tr>
@@ -161,19 +161,16 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>Ln-MS-GF:EValue</td>
     <td>Negative MS-GF+ E value, logged</td>
   </tr>
+  <tr>
+    <td rowspan="2">Search engine specific features (X!Tandem (v2017.2.1.2))</td>
+    <td>Ln-X!Tandem:expect</td>
+    <td>X!Tandem  Evalue, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>X!Tandem:hyperscore</td>
+    <td>X!Tandem hyperscore</td>
+  </tr>
 </table>
-
-
-Here is the format for the four search engines we used.
-
-#### MS-GF+ (v2019.02.28)
-
-#### Comet (2018.01 rev.4)
-
-#### X!Tandem (v2017.2.1.2)
-
-#### MaxQuant (v1.6.5.0)
-
 
 ## Output
 
