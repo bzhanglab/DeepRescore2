@@ -144,6 +144,23 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>Delta_Score</td>
     <td>Score difference to the second best identified peptide</td>
   </tr>
+  <tr>
+    <td rowspan="4">SE specific features (MS-GF+ (v2019.02.28))</td>
+    <td>MS-GF:RawScore</td>
+    <td>Raw match score of MS-GF+</td>
+  </tr>
+  <tr>
+    <td>MS-GF:DeNovoScore</td>
+    <td>Maximum possible raw match score to this spectrum</td>
+  </tr>
+  <tr>
+    <td>MS-GF:SpecEValue</td>
+    <td>Negative MS-GF+ Spectral E Value, logged</td>
+  </tr>
+  <tr>
+    <td>Ln-MS-GF:EValue</td>
+    <td>Negative MS-GF+ E value, logged</td>
+  </tr>
 </table>
 
 
