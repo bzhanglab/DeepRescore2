@@ -60,7 +60,7 @@ Each column of the parameter file is described as follows (Please change the 'Va
 | FixedMods  | Fix_MOD  | Fixed modifications used for searching, e.g. '5,Carbamidomethyl,C,57.021464,3'. If null, use 'null' |
 | ModsReplace  | RENAME_MOD  | Some modifications need to rename, e.g. '[79.966331],Phospho'. If null, use 'null' |
 
-As a reference, we prepared three parameters for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
+As a reference, we prepared 9 parameter files for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
 
 ## Generate feature matrix as input
 
@@ -172,7 +172,37 @@ Please prepare a feature matrix including all the necessary features as follows:
   </tr>
 </table>
 
-We used PDV (PDV-1.6.1.beta.features-jar-with-dependencies.jar) attached under the Script/GenerateFeatureMatrix folder to generate feature matrix. The script to run this jar file is as follows:
+We used PDV (PDV-1.6.1.beta.features-jar-with-dependencies.jar) attached under the 'Script/GenerateFeatureMatrix' folder to generate feature matrix. The script to run this jar file based on the Comet (2018.01 rev.4) identifications is as follows:
+
+```sh
+nextflow run DeepRescore.nf --id_file ./example_data/A1101.pep.xml \
+	--ms_file ./example_data/A1101.mgf \
+	--se comet \
+	--ms_instrument Lumos \
+	--ms_energy 0.34 \
+	--out_dir out \
+	--prefix d2 \
+	--decoy_prefix XXX_ \
+	--cpu 4 \
+	--mem 8
+```
+
+```sh
+java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-with-dependencies.jar \
+	-r ./ExampleData/PXD023665/Comet.pep.xml \
+	-rt 2 \
+	-s ./ExampleData/QE3_191209_OPL1025_FR_U2OS_TiOx_A_B_C.mgf \
+	-st 1 \
+	-i * \
+	-k s \
+	-o . \
+	-a 0.02 \
+	-c 0 \
+	-decoy REV_ \
+	-ft pdf \
+	--features
+
+```
 
 ## Output
 
