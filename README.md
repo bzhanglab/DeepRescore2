@@ -112,7 +112,6 @@ Please prepare a feature matrix including all the necessary features as follows:
   </tr>
   <tr>
     <td rowspan="2">SE specific features</td>
-    <th colspan="2">Comet</th>
     <td>xcorr</td>
     <td>Cross-correlation of the experimental and theoretical spectra</td>
   </tr>
