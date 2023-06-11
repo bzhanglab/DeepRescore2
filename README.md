@@ -111,13 +111,25 @@ Please prepare a feature matrix including all the necessary features as follows:
     <td>The total intensity of all matched ions divided by the total intensity of the spectrum</td>
   </tr>
   <tr>
-    <td rowspan="2">SE specific features (Comet (2018.01 rev.4))</td>
+    <td rowspan="5">SE specific features (Comet (2018.01 rev.4))</td>
     <td>xcorr</td>
     <td>Cross-correlation of the experimental and theoretical spectra</td>
   </tr>
   <tr>
     <td>deltacn</td>
     <td>The normalized difference of XCorr values between the best sequence and the next best sequence</td>
+  </tr>
+  <tr>
+    <td>spscore</td>
+    <td>The spscore of Comet</td>
+  </tr>
+  <tr>
+    <td>sprank</td>
+    <td>The sprank score of Comet</td>
+  </tr>
+  <tr>
+    <td>Ln_expect</td>
+    <td>Comet  Evalue, natural logarithm transformed</td>
   </tr>
 </table>
 
