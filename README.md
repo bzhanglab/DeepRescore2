@@ -13,9 +13,17 @@
 
 - [Installation](#Installation)
 - [Usage](#Usage)
+- [Input](#Input)
+- [Output](#Output)
+- [Other functions](#Other-functions)
 - [How to cite](#How-to-cite)
 
 ## Installation
+
+#### System requirements
+
+* Windows systems
+
 DeepRescore2 is built based on python, R and docker on the Windows system. 
 * Install Java
 * Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html), [data.table](https://cran.r-project.org/web/packages/data.table/index.html) package installed.
@@ -29,10 +37,6 @@ DeepRescore2 is built based on python, R and docker on the Windows system.
 ```shell
 $ git clone https://github.com/bzhanglab/DeepRescore2
 ```
-
-#### System requirements
-
-* Windows systems
 
 ## Usage
 
@@ -62,7 +66,9 @@ Each column of the parameter file is described as follows (Please change the 'Va
 
 As a reference, we prepared 9 parameter files for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
 
-## Generate feature matrix as input
+## Input
+
+#### Generate feature matrix as input
 
 Please prepare a feature matrix including all the necessary features as follows:
 
@@ -208,7 +214,9 @@ DeepRescore2 also output two tables as the final results:
 * File named 'Method1Results.txt' which is filtered using both PGA FDR < 1% and PhosphoRS localization probability > 0.75.
 * File named 'DeepRescore2Results.txt' which is filtered using both q-value < 1% and DeepLocalization probability > 0.75.
 
-## Quantification for TMT dataset
+## Other functions
+
+#### Quantification for TMT dataset
 
 In our manuscript, we used [MASCI](https://github.com/PNNL-Comp-Mass-Spec/MASIC) to perform the TMT quantification for both TMT10 (UCEC) and TMT11 (HCC) datasets. We prepared the original scripts we used for the quantification under the 'Script/TMTQuantification' folder. You can change the input data path and parameters used for MASCI following our scripts to do the TMT quantification.
 
