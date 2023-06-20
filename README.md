@@ -20,11 +20,23 @@
 
 ## Installation
 
-#### System requirements
+#### Supported Operating Systems
 
 * Windows systems
 
-#### DeepRescore2 is built based on python, R and docker on the Windows system. 
+#### Hardware Requirements
+
+* DeepScore2 does not require GPUs for its execution. It can run efficiently on standard CPU-based systems. However, utilizing a GPU can potentially accelerate the processing time for certain operations, providing performance optimization.
+
+#### Computational Time
+* The computational time required by DeepScore2 is dependent on various factors, such as the size of the dataset and the specific hardware configuration.
+* For the synthetic dataset, it took approximately 2 hours to complete the analysis using a standalone Windows machine.
+* For the UCEC TMT dataset, the analysis required approximately 9 hours to complete. 
+
+#### Programmatic Interface
+* DeepScore2 provides a command-line interface (CLI) for users to execute the workflow.
+
+#### Programming Language and Framework 
 * Install Java
 * Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html), [data.table](https://cran.r-project.org/web/packages/data.table/index.html) package installed.
 * Install python >= 3.5 with pandas module
