@@ -24,7 +24,7 @@
 
 * Windows systems
 
-DeepRescore2 is built based on python, R and docker on the Windows system. 
+#### DeepRescore2 is built based on python, R and docker on the Windows system. 
 * Install Java
 * Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html), [data.table](https://cran.r-project.org/web/packages/data.table/index.html) package installed.
 * Install python >= 3.5 with pandas module
