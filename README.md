@@ -22,19 +22,20 @@
 
 #### Supported Operating Systems
 
-* Windows systems
+* Windows systems. To meet the Docker Desktop requirements, the Windows system needs to be running Windows 10 Pro, Enterprise, or Home (18363+) as the operating system version.
 
 #### Hardware Requirements
 
-* DeepScore2 does not require GPUs for its execution. It can run efficiently on standard CPU-based systems. However, utilizing a GPU can potentially accelerate the processing time for certain operations, providing performance optimization.
+* DeepRescore2 does not require GPUs for its execution. It can run efficiently on standard CPU-based systems. However, utilizing a GPU can potentially accelerate the processing time for certain operations, providing performance optimization.
 
 #### Computational Time
-* The computational time required by DeepScore2 is dependent on various factors, such as the size of the dataset and the specific hardware configuration.
-* For the synthetic dataset, it took approximately 2 hours to complete the analysis using a standalone Windows machine.
-* For the UCEC TMT dataset, the analysis required approximately 9 hours to complete. 
+* The computational time required by DeepRescore2 is dependent on various factors, such as the size of the dataset and the specific hardware configuration.
+* Due to the involvement of deep learning models, DeepRescore2 may require more computational time than traditional search engine + localization steps.
+* For the synthetic dataset, it took approximately 2 hours to complete the analysis using a Windows machine.
+* For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine. 
 
 #### Programmatic Interface
-* DeepScore2 provides a command-line interface (CLI) for users to execute the workflow.
+* DeepRescore2 provides a command-line interface (CLI) for users to execute the workflow.
 
 #### Programming Language and Framework 
 * Install Java
@@ -43,6 +44,11 @@
 * Install [Docker](https://docs.docker.com/install/) (>=19.03).
 * Install [pDeep3](https://github.com/pFindStudio/pDeep3) under conda environment named 'pDeep3'. Tensorflow version 1.13.1 is required.
 * Install [AutoRT](https://github.com/bzhanglab/AutoRT). Tensorflow version 2.6.0 is required.
+
+#### Data types
+* Instrument Type: The proposed approach, DeepRescore2, is designed to be applicable to mass spectrometry-based proteomics data obtained from various types of instruments, including but not limited to Orbitrap, Q-TOF, and ion trap instruments.
+* Peptide Type: DeepRescore2 is applicable to different types of peptides, including both labeled (e.g., TMT-labeled) and unlabeled peptides. However, it is important to note that DeepRescore2 is specifically designed to handle peptides with phosphorylation modification.
+
 
 #### Download DeepRescore2
 
