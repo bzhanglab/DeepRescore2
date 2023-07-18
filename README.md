@@ -32,12 +32,13 @@
 * The computational time required by DeepRescore2 is dependent on various factors, such as the size of the dataset and the specific hardware configuration.
 * Due to the involvement of deep learning models, DeepRescore2 may require more computational time than traditional search engine + localization steps.
 * For the synthetic dataset, it took approximately 2 hours to complete the analysis using a Windows machine.
-* For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine. 
+* For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine.
 
 #### Programmatic Interface
 * DeepRescore2 provides a command-line interface (CLI) for users to execute the workflow.
 
 #### Programming Language and Framework 
+* DeepRescore2 is implemented using Python, R, and shell programming languages. It relies on multiple libraries and frameworks as listed below
 * Install Java
 * Install R with [tidyverse](https://www.tidyverse.org/packages/), [XML](https://cran.r-project.org/web/packages/XML/index.html), [data.table](https://cran.r-project.org/web/packages/data.table/index.html) package installed.
 * Install python >= 3.5 with pandas module
