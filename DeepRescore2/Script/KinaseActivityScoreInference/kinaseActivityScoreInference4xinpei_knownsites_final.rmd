@@ -1,0 +1,144 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(gplots)
+```
+
+load kinase-substrate (KS) table and extract 15mer
+```{r}
+KS_table <- read_xlsx("../pancan/copy number data/mmc4.xlsx")
+KS_table <- KS_table[KS_table$Species=="Homo sapiens", ]
+KS_table <- KS_table[KS_table$`UniProt ID...1` != KS_table$`UniProt ID...3`, ]
+KS_table$Site <- sapply(KS_table$Sequence, function(x) paste0(unlist(strsplit(x, ""))[24:38], collapse = ""))
+KS_table$Site <- gsub("\\*","_",KS_table$Site)
+colnames(KS_table)[2] <- "Kinase"
+```
+
+
+load data, assign gene|15mer rownames, and log transform & median center data
+```{r}
+#phosphoRS site data
+hcc_phos_orig <- read.table("Input/HCC_log2_MedianCenter_MissingValue1_PhosphoRS.txt", sep = "\t", stringsAsFactors = F,header = T)
+sum(duplicated(hcc_phos_orig$Phosphosite))
+rownames(hcc_phos_orig) <- toupper(hcc_phos_orig$Site)
+hcc_phos_orig <- hcc_phos_orig[ , c(-1:-8)]
+hcc_phos_orig_medCent <- scale(t(hcc_phos_orig), center=apply(hcc_phos_orig,1,median,na.rm=T), scale=F) %>% 
+  t %>% 
+  as.data.frame
+
+#DRS2 site data
+hcc_phos_rs2 <- read.table("Input/HCC_log2_MedianCenter_MissingValue1_DeepRescore2.txt", sep = "\t", stringsAsFactors = F,header = T)
+sum(duplicated(hcc_phos_rs2$Phosphosite))
+rownames(hcc_phos_rs2) <- toupper(hcc_phos_rs2$Site)
+hcc_phos_rs2 <- hcc_phos_rs2[ , c(-1:-8)]
+hcc_phos_rs2_medCent <- scale(t(hcc_phos_rs2), center=apply(hcc_phos_rs2,1,median,na.rm=T), scale=F) %>% 
+  t %>% 
+  as.data.frame
+```
+
+```{r}
+KS_known <- KS_table[KS_table$Site %in% rownames(hcc_phos_rs2_medCent), ]
+```
+
+
+for each dataset, calculate activity scores using combination of targets from KS table and NetworKin predictions
+
+function for KSEA/Z-statistic method
+```{r}
+ksea <- function(x, set_sites, col_y=1){
+  x <- data.matrix(x)
+  x <- x[!is.na(x[ , col_y]), col_y, drop=F]
+  set_sites <- intersect(rownames(x), set_sites)
+  return(((mean(x[set_sites, ], na.rm=T) - mean(x, na.rm=T)) * (length(set_sites))^0.5)/sd(x, na.rm = T))
+}
+```
+
+function for mapping sites from KS table and NetworKin table to dataset and calculating mean of targets for a given kinase in that dataset >> kinase activity scores
+```{r}
+calculate_kinase_activity <- function(phospho_df, KS_df_known=KS_table, min_sites=5){
+  kins <- unique(KS_df_known$Kinase)
+  mean_scores <- matrix(NA, nrow = length(kins), ncol = ncol(phospho_df), dimnames = list(kins, colnames(phospho_df)))
+  ksea_scores <- mean_scores
+  num_targets <- ksea_scores
+  for(i in 1:length(kins)){
+    targets <- intersect(rownames(phospho_df), KS_df_known$Site[KS_df_known$Kinase==kins[i]])
+    if(length(targets) >= min_sites){
+      mean_scores[kins[i], ] <- colMeans(phospho_df[targets, ], na.rm = T)
+      ksea_scores[kins[i], ] <- apply(phospho_df, MARGIN = 2, ksea, targets)
+      for(j in 1:ncol(phospho_df)){
+        target_num <- sum(!is.na(phospho_df[targets, j]))
+        num_targets[kins[i], j] <- target_num
+        if(target_num < min_sites){
+          mean_scores[kins[i], j] <- NA
+          ksea_scores[kins[i], j] <- NA
+        }
+      }
+    } else {
+      mean_scores <- mean_scores[rownames(mean_scores) != kins[i], ]
+      ksea_scores <- ksea_scores[rownames(ksea_scores) != kins[i], ]
+      num_targets <- num_targets[rownames(num_targets) != kins[i], ]
+    }
+  }
+  num_targets[is.na(num_targets)] <- 0
+  scores <- list(mean_scores, ksea_scores, num_targets)
+  sites <- KS_df_known[KS_df_known$Site %in% rownames(phospho_df), ]
+  names(scores) <- c("mean_of_targets","ksea_scores","number_of_targets")
+  op <- list(scores, sites)
+  names(op) <- c("scores", "sites")
+  return(op)
+}
+```  
+
+
+calculate activity scores for each phospho dataset
+```{r}
+hcc_orig_kinase_act <- calculate_kinase_activity(phospho_df = hcc_phos_orig_medCent)
+hcc_rs2_kinase_act <- calculate_kinase_activity(phospho_df = hcc_phos_rs2_medCent)
+```
+
+how many kinases have acivity scores?
+```{r}
+print(paste0("number of kinases for hcc phosphoRS: ", sum(rowSums(!is.na(hcc_orig_kinase_act$scores$ksea_scores)) >0)))
+print(paste0("number of kinases for hcc deepRS2: ", sum(rowSums(!is.na(hcc_rs2_kinase_act$scores$ksea_scores)) >0)))
+print(paste0("number of kinases for hcc phosphoRS with 100+ scores: ", sum(rowSums(!is.na(hcc_orig_kinase_act$scores$ksea_scores)) >99)))
+print(paste0("number of kinases for hcc deepRS2 with 100+ scores: ", sum(rowSums(!is.na(hcc_rs2_kinase_act$scores$ksea_scores)) >99)))
+```
+
+KSEA vs. mean
+```{r}
+rownames(hcc_orig_kinase_act$scores$ksea_scores) == rownames(hcc_orig_kinase_act$scores$mean_of_targets)
+i <- 1
+plot(as.numeric(hcc_orig_kinase_act$scores$mean_of_targets[i, ]), as.numeric(hcc_orig_kinase_act$scores$ksea_scores[i, ]))
+```
+
+write to file
+```{r}
+hcc_orig_kinase_act_scores <- cbind(rownames(hcc_orig_kinase_act$scores$ksea_scores), round(hcc_orig_kinase_act$scores$ksea_scores, digits = 5))
+colnames(hcc_orig_kinase_act_scores)[1] <- "Kinase"
+write.table(hcc_orig_kinase_act_scores, "redo/HCC_PhosphoRS_kinase_activity_knownsites.txt", sep = "\t", quote = F, row.names = F)
+
+hcc_rs2_kinase_act_scores <- cbind(rownames(hcc_rs2_kinase_act$scores$ksea_scores), round(hcc_rs2_kinase_act$scores$ksea_scores, digits = 5))
+colnames(hcc_rs2_kinase_act_scores)[1] <- "Kinase"
+write.table(hcc_rs2_kinase_act_scores, "redo/HCC_DeepRescore2_kinase_activity_knownsites.txt", sep = "\t", quote = F, row.names = F)
+```
+
