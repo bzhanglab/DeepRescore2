@@ -11,12 +11,12 @@ import os
 
 import re
 
-#pathin = '/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/ManuscriptRevison_MCP/FirstRound/ResponseCode/DeepRescore2Pipeline/UCEC/Features_maxquant/features_maxquant.txt'
+#pathin = 'E:/Project/DeepRescore2/test/ExampleData/PXD000138/features_maxquant.txt'
 #data = pd.read_csv(pathin,sep='\t')
-#MGFPathin = '/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/ManuscriptRevison_MCP/FirstRound/ResponseCode/DeepRescore2Pipeline/tmp/InputData_UCEC/MGF'
-#pathout = '/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/ManuscriptRevison_MCP/FirstRound/ResponseCode/DeepRescore2Pipeline/UCEC/Features_maxquant/features_maxquant_2.txt'
-#Mods = '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2;6,TMT6plex,K,229.162932,4;5,Carbamidomethyl,C,57.021464,3;7,TMT6plex,AnyN-term,229.162932,5' 
-#ModsReplace = 'TMT 10-plex,TMT6plex;peptide N-term,AnyN-term'
+#MGFPathin = 'E:/Project/DeepRescore2/test/ExampleData/PXD000138/MGF'
+#pathout = 'E:/Project/DeepRescore2/test/PXD000138/Features/features.txt'
+#Mods = '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2' 
+#ModsReplace = 'null'
 
 pathin = sys.argv[1]
 data = pd.read_csv(pathin,sep='\t')

@@ -1,0 +1,13 @@
+name: $anacondaPath/envs/R_env  # The name of the R environment
+
+channels:
+  - conda-forge  # conda-forge pipeline includes multiple R packages
+
+dependencies:
+  - r=4.1.0  # Specify R version
+  #- r-essentials  # R Essentials package
+  - r-tidyverse  # R Tidyverse package，including dplyr、ggplot2、tidyr
+  - r-data.table  # R data.table package
+  - r-devtools  # R devtools package
+  - r-xml  # R xml package
+  - r-readr  # R readr package

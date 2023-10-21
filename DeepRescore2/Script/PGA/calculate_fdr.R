@@ -3,10 +3,10 @@ library(PGA)
 
 args <- commandArgs(T)
 folder_path <- args[1]
-sample <- 'pga'
-database <- args[2]
-decoyPrefix <- args[3]
-better_score_lower <- args[4]
+sample <- args[2]
+database <- args[3]
+decoyPrefix <- args[4]
+better_score_lower <- args[5]
 
 calculateFDR(psmfile=paste(folder_path, sample, "-rawPSMs.txt", sep=""),
 	db=database,

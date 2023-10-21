@@ -1,7 +1,6 @@
 library(tidyverse)
 library(data.table)
 
-
 args <- commandArgs(T)
 pep_pga_results <- fread(args[1]) %>% select(peptide)
 psm_pga_results <- fread(args[2]) %>% select(index, peptide, evalue)
@@ -9,9 +8,9 @@ all_features <- fread(args[3])
 Method1ResultsPath <- args[4]
 
 if (FALSE){
-pep_pga_results = fread('/Users/yixinpei/Documents/PostDocResearch/DeepRescore2/BuildPipeline/PXD023665/MaxQuant/PGA/peptide_level/pga-peptideSummary.txt') %>% select(peptide)
-psm_pga_results = fread('/Users/yixinpei/Documents/PostDocResearch/DeepRescore2/BuildPipeline/PXD023665/MaxQuant/PGA/psm_level/pga-peptideSummary.txt') %>% select(index, peptide, evalue)
-all_features <- fread('/Users/yixinpei/Documents/PostDocResearch/DeepRescore2/BuildPipeline/PXD023665/MaxQuant/Features/Features.Localization.txt')
+pep_pga_results = fread('E:/Project/DeepRescore2/test/PXD000138/PGA/peptide_level/pga-peptideSummary.txt') %>% select(peptide)
+psm_pga_results = fread('E:/Project/DeepRescore2/test/PXD000138/PGA/psm_level/pga-peptideSummary.txt') %>% select(index, peptide, evalue)
+all_features <- fread('E:/Project/DeepRescore2/test/PXD000138/Features/Features.Localization.entropy.txt')
 }
 
 psm_pga_results <- psm_pga_results %>% filter(peptide %in% pep_pga_results$peptide)

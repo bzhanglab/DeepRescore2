@@ -11,11 +11,11 @@ VariableMods <- args[6]
 FixedMods <- args[7]
 
 if (FALSE){
-phosphors <- fread('/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/BuildPipeline/PXD000138/MaxQuant3/PhosphoRS/PhosphoRS.txt')
-auto_rt <- fread('/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/BuildPipeline/PXD000138/MaxQuant3/AutoRT/autoRT_Results/tf_prediction/phospho.prediction.tsv')
-pDeep <- fread('/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/BuildPipeline/PXD000138/MaxQuant3/pDeep3/pDeep3PredictionResults.Phospho.txt')
-features <- fread('/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/BuildPipeline/PXD000138/MaxQuant3/Features/features.PhosphoRS.txt')
-output <- '/Users/xinpeiyi/Library/Mobile Documents/com~apple~CloudDocs/Documents/PostDocResearch/DeepRescore2/ManuscriptRevison_MCP/FirstRound/ResponseCode/DeepRescore2Pipeline/test/Features.Localization.entropy.txt'
+phosphors <- fread('E:/Project/DeepRescore2/test/PXD000138/PhosphoRS/PhosphoRS.txt')
+auto_rt <- fread('E:/Project/DeepRescore2/test/PXD000138/autoRT_Results/tf_prediction/phospho.prediction.tsv')
+pDeep <- fread('E:/Project/DeepRescore2/test/PXD000138/pDeep3_Results/pDeep3PredictionResults.Phospho.txt')
+features <- fread('E:/Project/DeepRescore2/test/PXD000138/Features/features.PhosphoRS.txt')
+output <- 'E:/Project/DeepRescore2/test/PXD000138/Features/Features.Localization.entropy.txt'
 VariableMods = '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2' # Identification modifications
 FixedMods = 'null' # Identification modifications
 }

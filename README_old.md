@@ -2,9 +2,7 @@
 
 ## Overview
 
-#### DeepRescore2: deep learning prediction boosts phosphoproteomics-based discoveries through improved phosphopeptide identification
-
-<img src="images/Pipeline.png" alt="Logo" width="600" align = "right">
+#### DeepRescore2: a novel post-processing tool by combing deep learning derived predictions, retention time and spectrum similarity, to facilitate the phosphosite localization and rescore peptide spectrum matches. The current version supports four search engines, [MS-GF+ (v2019.02.28)](https://github.com/MSGFPlus/msgfplus), [Comet (2018.01 rev.4)](http://comet-ms.sourceforge.net/), [X!Tandem (v2017.2.1.2)](https://www.thegpm.org/TANDEM/), and [MaxQuant (v1.6.5.0)](https://maxquant.org/).
 
 
 ## Pipeline

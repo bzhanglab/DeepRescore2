@@ -1,3 +1,2 @@
 peptide	modinfo	charge
 ADEFMNQPK	5,Oxidation[M]	2
-ADEFMNQPK	5,Oxidation[M]	3

@@ -1,8 +1,5 @@
 import numpy as np
 import scipy.stats
-from numpy import linalg as LA
-import math
-from scipy.stats.stats import pearsonr, spearmanr, kendalltau
 
 
 def unweighted_entropy_distance(p, q):
@@ -15,8 +12,8 @@ def unweighted_entropy_distance(p, q):
     """
     merged = p + q
     entropy_increase = 2 * \
-        scipy.stats.entropy(merged) - scipy.stats.entropy(p) - \
-        scipy.stats.entropy(q)
+                       scipy.stats.entropy(merged) - scipy.stats.entropy(p) - \
+                       scipy.stats.entropy(q)
     return entropy_increase
 
 
@@ -37,7 +34,7 @@ def entropy_distance(p, q):
 def _weight_intensity_by_entropy(x):
     WEIGHT_START = 0.25
     ENTROPY_CUTOFF = 3
-    weight_slope = (1-WEIGHT_START) / ENTROPY_CUTOFF
+    weight_slope = (1 - WEIGHT_START) / ENTROPY_CUTOFF
 
     if np.sum(x) > 0:
         entropy_x = scipy.stats.entropy(x)
@@ -408,48 +405,67 @@ def absolute_value_distance(p, q):
 
 def dot_product_distance(p, q):
     r"""
-    Dot-Product distance:
+    Dot product distance:
 
     .. math::
 
-        1 - (\frac{(\sum{Q_iP_i})^2}{\sum{Q_i^2\sum P_i^2}})^1/2
+        1 - \sqrt{\frac{(\sum{Q_iP_i})^2}{\sum{Q_i^2\sum P_i^2}}}
     """
     score = np.power(np.sum(q * p), 2) / \
             (np.sum(np.power(q, 2)) * np.sum(np.power(p, 2)))
     return 1 - np.sqrt(score)
 
 
-def dot_product_reverse_distance(p, q):
+def cosine_distance(p, q):
     r"""
-    Dot-Product reverse distance:
+    Cosine distance, it gives the same result as the dot product.
 
     .. math::
 
-        1 - (\frac{(\sum{Q_iP_i})^2}{\sum{Q_i^2\sum P_i^2}})^1/2
+        1 - \sqrt{\frac{(\sum{Q_iP_i})^2}{\sum{Q_i^2\sum P_i^2}}}
+    """
+    return dot_product_distance(p, q)
+
+
+def dot_product_reverse_distance(p, q):
+    r"""
+    Reverse dot product distance, only consider peaks existed in spectrum Q.
+
+    .. math::
+
+        1 - \sqrt{\frac{(\sum{{} {P_i^{'}}})^2}{{\sum{(Q_i^{'})^2}{\sum (P_i^{'})^2}}}}, with:
+
+        P^{'}_{i}=\frac{P^{''}_{i}}{\sum_{i}{P^{''}_{i}}},
+
+        P^{''}_{i}=\begin{cases}
+        0 & \text{ if } Q_{i}=0 \\
+        P_{i} & \text{ if } Q_{i}\neq0
+        \end{cases}
+
     """
 
-    #p, q = _select_common_peaks(p, q)
-    #if np.sum(p) == 0:
-    #    score = 0
-    #else:
-    #    score = np.power(np.sum(q * p), 2) / \
-    #            (np.sum(np.power(q, 2)) * np.sum(np.power(p, 2)))
-    #return 1 - np.sqrt(score)
-    return 1-np.dot(np.sqrt(p),np.sqrt(q)) / np.dot(np.sqrt(sum(p)),np.sqrt(sum(q)))
+    p, q = _select_common_peaks(p, q)
+    if np.sum(p) == 0:
+        score = 0
+    else:
+        score = np.power(np.sum(q * p), 2) / \
+                (np.sum(np.power(q, 2)) * np.sum(np.power(p, 2)))
+    return 1 - np.sqrt(score)
+
 
 def spectral_contrast_angle_distance(p, q):
     r"""
-    Spectral Contrast Angle:
+    Spectral Contrast Angle distance.
+    Please note that the value calculated here is :math:`\cos\theta`.
+    If you want to get the :math:`\theta`, you can calculate with: :math:`\arccos(1-distance)`
 
     .. math::
 
         1 - \frac{\sum{Q_iP_i}}{\sqrt{\sum Q_i^2\sum P_i^2}}
     """
-    #return 1 - np.sum(q * p) / \
-    #       np.sqrt(np.sum(np.power(q, 2)) * np.sum(np.power(p, 2)))
-    x = p/LA.norm(p)
-    y = q/LA.norm(q)
-    return 1 - (2 * math.acos(np.dot(x,y))/math.pi)
+    return 1 - np.sum(q * p) / \
+           np.sqrt(np.sum(np.power(q, 2)) * np.sum(np.power(p, 2)))
+
 
 def wave_hedges_distance(p, q):
     r"""
@@ -459,8 +475,8 @@ def wave_hedges_distance(p, q):
 
         \sum\frac{|P_i-Q_i|}{\max{(P_i,Q_i)}}
     """
-    #return np.sum(np.abs(p - q) / np.maximum(p, q))
-    return np.dot(p, q) / (np.linalg.norm(p)*np.linalg.norm(q))
+    return np.sum(np.abs(p - q) / np.maximum(p, q))
+
 
 def jaccard_distance(p, q):
     r"""
@@ -482,9 +498,9 @@ def dice_distance(p, q):
 
         \frac{\sum(P_i-Q_i)^2}{\sum P_i^2+\sum Q_i^2}
     """
-    #return np.sum(np.power(p - q, 2)) / \
-    #       (np.sum(np.power(p, 2)) + np.sum(np.power(q, 2)))
-    return -pearsonr(p, q)[0]
+    return np.sum(np.power(p - q, 2)) / \
+           (np.sum(np.power(p, 2)) + np.sum(np.power(q, 2)))
+
 
 def inner_product_distance(p, q):
     r"""
@@ -494,8 +510,8 @@ def inner_product_distance(p, q):
 
         1-\sum{P_iQ_i}
     """
-    #return 1 - np.sum(p * q)
-    return -spearmanr(p, q)[0]
+    return 1 - np.sum(p * q)
+
 
 def divergence_distance(p, q):
     r"""
@@ -505,8 +521,8 @@ def divergence_distance(p, q):
 
         2\sum\frac{(P_i-Q_i)^2}{(P_i+Q_i)^2}
     """
-    #return 2 * np.sum((np.power(p - q, 2)) / np.power(p + q, 2))
-    return -kendalltau(p, q)[0]
+    return 2 * np.sum((np.power(p - q, 2)) / np.power(p + q, 2))
+
 
 def avg_l_distance(p, q):
     r"""

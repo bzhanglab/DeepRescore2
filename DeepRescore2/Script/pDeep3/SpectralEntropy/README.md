@@ -1,148 +1,98 @@
+# Spectral entropy
+
 [![DOI](https://zenodo.org/badge/232434019.svg)](https://zenodo.org/badge/latestdoi/232434019)
 [![Python Package using Conda](https://github.com/YuanyueLi/SpectralEntropy/actions/workflows/python-package-conda.yml/badge.svg?branch=master)](https://github.com/YuanyueLi/SpectralEntropy/actions/workflows/python-package-conda.yml)
 [![Python package](https://github.com/YuanyueLi/SpectralEntropy/actions/workflows/python-package.yml/badge.svg?branch=master)](https://github.com/YuanyueLi/SpectralEntropy/actions/workflows/python-package.yml)
 
-# Search spectra with entropy similarity
+This repository contains the original source code for the paper:
 
-To search spectral files with entropy similarity, you can download pre-compiled program from [https://github.com/YuanyueLi/EntropySearch/releases](https://github.com/YuanyueLi/EntropySearch/releases).
+> Li, Y., Kind, T., Folz, J. _et al._ Spectral entropy outperforms MS/MS dot product similarity for small-molecule compound identification. _Nat Methods_ **18**, 1524–1531 (2021). https://doi.org/10.1038/s41592-021-01331-z
 
-For advanced user who want to calculate spectral entropy / entropy similarity / other spectral similarity by themself, please use the Python code below.
+If you find our work useful, please consider citing our paper.
 
-A jupyter notebook example is provided here: [https://github.com/YuanyueLi/SpectralEntropy/blob/master/example.ipynb](https://github.com/YuanyueLi/SpectralEntropy/blob/master/example.ipynb)
+We are constantly improving our code and adding new features. Currently, our package includes spectral entropy, entropy similarity, and many other functions. These are all integrated into the [MSEntropy package (https://github.com/YuanyueLi/MSEntropy)](https://github.com/YuanyueLi/MSEntropy).
 
-The detailed reference for using the 43 different algorithm to calculate spectral similarity can be found here: [https://SpectralEntropy.readthedocs.io/en/master/](https://SpectralEntropy.readthedocs.io/en/master/) 
+We recommend using the [MSEntropy package](https://github.com/YuanyueLi/MSEntropy) to access the most recent version of our code. With the `MSEntropy` package, the method for calculating entropy similarity has been rewritten using the Flash entropy search algorithm. This has resulted in speed improvements without compromising accuracy.
 
-# Requirement
+The MSEntropy package supports multiple languages, including `Python`, `R`, `C/C++`, and `JavaScript`.
 
-Python 3.7, numpy>=1.17.4, scipy>=1.3.2
+In addition, we provide a standalone GUI named [Entropy Search (https://github.com/YuanyueLi/EntropySearch)](https://github.com/YuanyueLi/EntropySearch) for comparing spectral files or searching a spectral file against a spectral library using entropy similarity. The GUI supports `.mgf`, `.msp`, `.mzML`, and `.lbm2` file formats.
 
-cython>=0.29.13 (Not required but highly recommended)
+------------------------------------------------------------------------
 
-```bash
-# The command below is not required but strongly recommended, as it will compile the cython code to run faster
-python setup.py build_ext --inplace
-```
+## Ways to Calculate Spectral Entropy and Entropy Similarity
 
-# Spectral entropy
+There are several ways you can calculate spectral entropy and entropy similarity, either through our GUI or by integrating our package into your code.
 
-To calculate spectral entropy, the spectrum need to be centroid first.
-When you are focusing on fragment ion's information, the precursor ion may need to be removed from the spectrum before calculating spectral entropy.
-If isotope peak exitsted on the MS/MS spectrum, the isotope peak should be removed fist as the isotope peak does not contain useful information for identifing molecule.
+### Using the GUI
 
-Calculate spectral entropy for **centroid** spectrum with python is very simple (just one line with scipy package).
+Our GUI provides a user-friendly way to visualize and calculate entropy similarity:
 
-```python
-import numpy as np
-import scipy.stats
+- For a straightforward approach to real-time visualize and calculate entropy similarity for two MS/MS spectra, use the [MS Viewer web app](https://yuanyueli.github.io/MSViewer).
 
-spectrum = np.array([[41.04, 37.16], [69.07, 66.83], [86.1, 999.0]], dtype=np.float32)
+- To search one spectral file against another spectral file or a spectral library, use the [Entropy Search GUI](https://github.com/YuanyueLi/EntropySearch). The GUI supports `.mgf`, `.msp`, `.mzML`, and `.lbm2` file formats.
 
-entropy = scipy.stats.entropy(spectrum[:, 1])
-print("Spectral entropy is {}.".format(entropy))
-# The output should be: Spectral entropy is 0.3737888038158417.
-print('-' * 30)
-```
+### Coding with Our Package
 
-For **profile** spectrum which haven't been centroid, you can use a ```clean_spectrum``` to centroid the spectrum, for
-example:
+If you prefer to integrate our tools directly into your code, visit the [MSEntropy repository](https://github.com/YuanyueLi/MSEntropy) for the latest version of our code.
 
-```python
-import numpy as np
-import scipy.stats
-import spectral_entropy
+- To calculate spectral entropy or entropy similarity:
 
-spectrum = np.array([[69.071, 7.917962], [86.066, 1.021589], [86.0969, 100.0]], dtype=np.float32)
+  - **Python** users: use the [`ms-entropy` package](https://pypi.org/project/ms-entropy/). Find the documentation [here](https://msentropy.readthedocs.io/).
 
-spectrum = spectral_entropy.clean_spectrum(spectrum)
-entropy = scipy.stats.entropy(spectrum[:, 1])
-print("Spectral entropy is {}.".format(entropy))
-# The output should be: Entropy similarity:0.2605222463607788.
-print('-' * 30)
-```
+  - **R** users: use the [`msentropy` package](https://cran.r-project.org/web/packages/msentropy/index.html). Documentation is available [here](https://cran.r-project.org/web/packages/msentropy/msentropy.pdf).
 
+  - **C/C++** users: refer to the examples in the [languages/c folder of `MSEntropy` repository](https://github.com/YuanyueLi/MSEntropy/tree/main/languages/c).
 
-We provide a function  ```clean_spectrum``` to help you remove precursor ion, centroid spectrum and remove noise ions.
-Please note that this function will not remove the isotope peak, you need to remove the isotope peak by yourself.
-For example:
+  - **JavaScript** users: refer to the examples in the [languages/javascript folder of `MSEntropy` repository](https://github.com/YuanyueLi/MSEntropy/tree/main/languages/javascript).
 
-```python
-import numpy as np
-import spectral_entropy
+- To use the Flash entropy search algorithm to search a spectral file against a large spectral library:
 
-spectrum = np.array([[41.04, 0.3716], [69.071, 7.917962], [69.071, 100.], [86.0969, 66.83]], dtype=np.float32)
-clean_spectrum = spectral_entropy.clean_spectrum(spectrum,
-                                                 max_mz=85,
-                                                 noise_removal=0.01,
-                                                 ms2_da=0.05)
-print("Clean spectrum will be:{}".format(clean_spectrum))
-# The output should be: Clean spectrum will be:[[69.071  1.   ]]
-print('-' * 30)
-```
+  Currently, the Flash entropy search algorithm is only available in **Python**. Use the [`ms-entropy` package](https://pypi.org/project/ms-entropy/). Find the documentation [here](https://msentropy.readthedocs.io/).
 
-# Entropy similarity
+------------------------------------------------------------------------
 
-Before calculate entropy similarity, the spectrum need to be centroid first. Remove the noise ions is highly recommend.
-Also, base on our test on NIST20 and Massbank.us database, remove ions have m/z higher than precursor ion's m/z - 1.6
-will greatly improve the spectral identification performance.
+## Brief Introduction
 
-We provide ```calculate_entropy_similarity``` function to calculate two spectral entropy.
+### For Python user
 
-```python
-import numpy as np
-import spectral_entropy
+To calculate spectral entropy or entropy similarity in Python, use the `MSEntropy` package. You can download it from [PyPI (https://pypi.org/project/ms-entropy/)](https://pypi.org/project/ms-entropy/).
 
-spec_query = np.array([[69.071, 7.917962], [86.066, 1.021589], [86.0969, 100.0]], dtype=np.float32)
-spec_reference = np.array([[41.04, 37.16], [69.07, 66.83], [86.1, 999.0]], dtype=np.float32)
+For detailed documentation of the `MSEntropy` package, refer to our [ReadTheDocs page https://msentropy.readthedocs.io/](https://msentropy.readthedocs.io/).
 
-# Calculate entropy similarity.
-similarity = spectral_entropy.calculate_entropy_similarity(spec_query, spec_reference, ms2_da=0.05)
-print("Entropy similarity:{}.".format(similarity))
-# The output should be: Entropy similarity:0.8984397722577456.
-print('-' * 30)
-```
+You can install the `MSEntropy` package using `pip`:
 
-# Spectral similarity
-We also provide 43 different spectral similarity algorithm for MS/MS spectral comparison
+    pip install ms_entropy
 
-You can find the detail reference
-here: [https://SpectralEntropy.readthedocs.io/en/master/](https://SpectralEntropy.readthedocs.io/en/master/)
+### For R user
 
-# Example code
+For R users, the `msentropy` package allows calculation of spectral entropy and entropy similarity. Download it from [CRAN](https://cran.r-project.org/web/packages/msentropy/index.html).
 
-Before calculating spectral similarity, it's highly recommended to remove spectral noise. For example, peaks have
-intensity less than 1% maximum intensity can be removed to improve identificaiton performance.
+You can access the detailed documentation for the `msentropy` package [here](https://cran.r-project.org/web/packages/msentropy/msentropy.pdf).
 
-```python
-import numpy as np
-import spectral_entropy
+You can install the `msentropy` package using `install.packages`:
 
-spec_query = np.array([[69.071, 7.917962], [86.066, 1.021589], [86.0969, 100.0]], dtype=np.float32)
-spec_reference = np.array([[41.04, 37.16], [69.07, 66.83], [86.1, 999.0]], dtype=np.float32)
+    install.packages("msentropy")
 
-# Calculate entropy similarity.
-similarity = spectral_entropy.similarity(spec_query, spec_reference, method="entropy",
-                                         ms2_da=0.05)
-print("Entropy similarity:{}.".format(similarity))
-# The output should be: Entropy similarity:0.8984397722577456.
-print('-' * 30)
+### For C/C++ user
 
-# Calculate unweighted entropy similarity.
-similarity = spectral_entropy.similarity(spec_query, spec_reference, method="unweighted_entropy",
-                                         ms2_da=0.05)
-print("Unweighted entropy similarity:{}.".format(similarity))
-# The output should be: Unweighted entropy similarity:0.9826668790176113.
-print('-' * 30)
+Source code and example code for calculating spectral entropy and entropy similarity in C/C++ can be found in the [languages/c folder of `MSEntropy` repository](https://github.com/YuanyueLi/MSEntropy/tree/main/languages/c).
 
-# Calculate all similarity.
-all_dist = spectral_entropy.all_similarity(spec_query, spec_reference, ms2_da=0.05)
-for dist_name in all_dist:
-    method_name = spectral_entropy.methods_name[dist_name]
-    print("Method name: {}, similarity score:{}.".format(method_name, all_dist[dist_name]))
+### For JavaScript user
 
-# A list of different spectral similarity will be shown.
-```
+Source code and example code for calculating spectral entropy and entropy similarity in JavaScript can be found in the [languages/javascript folder of `MSEntropy` repository](https://github.com/YuanyueLi/MSEntropy/tree/main/languages/javascript).
 
-# Supported similarity algorithm list:
+Please note: If you encounter an entropy similarity score higher than 1 in your self-implemented code, it could be due to errors in merging peaks within MS2-tolerance. Use the code provided in our repository to avoid this issue.
+
+------------------------------------------------------------------------
+
+## Spectral Similarity
+
+The code in this repository provides 43 different spectral similarity algorithms for MS/MS spectral comparison.
+
+For detailed information about these algorithms, refer to our [documentation](https://SpectralEntropy.readthedocs.io/en/master/).
+
+### Supported similarity algorithm list
 
     "entropy": Entropy distance
     "unweighted_entropy": Unweighted entropy distance
