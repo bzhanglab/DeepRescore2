@@ -53,6 +53,12 @@ DeepRescore2
 - **Parameters** include 9 parameter files for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively.
 - **Install** includes scripts for installing DeepRescore2, e.g., configuring the deep learning Conda environment, and installing R packages.
 
+## Customize environment for DeepRescore2
+### Our DeepRescore2 environment
+- Windows 10 64bit. To meet the Docker Desktop requirements, the Windows system needs to be running Windows 10 Pro, Enterprise, or Home (18363+) as the operating system version.
+- Conda. We built three conda environments for AutoRT, pDeep3 and R, respectively, to meet the requirements of different environment verisons, e.g. tensorflow.
+
+
 
 ## Table of contents:
 
