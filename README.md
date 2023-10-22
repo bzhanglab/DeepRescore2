@@ -48,7 +48,8 @@ DeepRescore2
 |---Install.sh
 |---environment_R.yml
 ```
-
+- **Script** implements deep learning algorithms to improve phosphopeptide identification and phosphosite localization.
+- **Parameters** include 9 parameter files for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively.
 
 ## Table of contents:
 
