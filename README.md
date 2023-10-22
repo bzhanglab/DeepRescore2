@@ -7,12 +7,19 @@ Shotgun phosphoproteomics enables high-throughput analysis of phosphopeptides in
 
 ## Contents
 
-- [Directory structure of DeepRescore2](#directory-structure-of-DeepRescore2)
-- [Customize environment for DeepRescore2](#customize-environment-for-DeepRescore2)
+- [Directory structure of DeepRescore2](#directory-structure-of-deeprescore2)
+- [Customize environment for DeepRescore2](#customize-environment-for-deeprescore2)
   - [Our DeepRescore2 environment](#our-DeepRescore2-environment)
   - [Installation](#installation)
   - [Data type](#data-type)
-
+- [Implement DeepRescore2](#implement-deeprescore2)
+  - [Directory structure of input](#directory-structure-of-input) 
+  - [Download example data](#download-example-data)
+  - [Parameters of DeepRescore2](parameters-of-deeprescore2)
+  - [Implement DeepRescore2 with scripts](#implement-deeprescore2-with-scripts)
+- [Other functions](#Other-functions)
+- [Contact](#contact)
+- [References](#references)
 
 
 
