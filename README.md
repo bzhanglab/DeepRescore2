@@ -65,6 +65,12 @@ DeepRescore2
 - For the synthetic dataset, it took approximately 2 hours to complete the analysis using a Windows machine.
 - For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine.
 
+### Installation
+- Download AutoRT and put it into the DeepRescore2 Script folder: DeepRescore2/Script.
+```
+$ git clone https://github.com/bzhanglab/AutoRT.git
+$ move AutoRT DeepRescore2/Script
+```
 
 
 ## Table of contents:
