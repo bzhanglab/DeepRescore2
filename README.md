@@ -3,13 +3,11 @@
 
 <img src="Image/Pipeline2.png" alt="Logo" width="450" align = "right">
 
-Shotgun phosphoproteomics enables high-throughput analysis of phosphopeptides in biological samples. One of the primary challenges associated with this technology is the relatively low rate of phosphopeptide identification during data analysis. This limitation hampers the full realization of the potential offered by shotgun phosphoproteomics. Here we present DeepRescore2, a computational workflow that leverages deep learning-based retention time and fragment ion intensity predictions to improve phosphopeptide identification and phosphosite localization. Using a state-of-art computational workflow as a benchmark, DeepRescore2 increases the number of correctly identified peptide-spectrum matches by 17% in a synthetic dataset and identifies 19%-46% more phosphopeptides in biological datasets. In a liver cancer dataset, 30% of the significantly altered phosphosites between tumor and normal tissues and 60% of the prognosis-associated phosphosites identified from DeepRescore2 processed data could not be identified based on the state-of-the-art workflow.
+Shotgun phosphoproteomics enables high-throughput analysis of phosphopeptides in biological samples. One of the primary challenges associated with this technology is the relatively low rate of phosphopeptide identification during data analysis. This limitation hampers the full realization of the potential offered by shotgun phosphoproteomics. Here we present DeepRescore2, a computational workflow that leverages deep learning-based retention time and fragment ion intensity predictions to improve phosphopeptide identification and phosphosite localization. Using a state-of-art computational workflow as a benchmark, DeepRescore2 increases the number of correctly identified peptide-spectrum matches by 17% in a synthetic dataset and identifies 19%-46% more phosphopeptides in biological datasets. In a liver cancer dataset, 30% of the significantly altered phosphosites between tumor and normal tissues and 60% of the prognosis-associated phosphosites identified from DeepRescore2-processed data could not be identified based on the state-of-the-art workflow. Notably, DeepRescore2-processed data uniquely identifies EGFR hyperactivation as a new target in poor-prognosis liver cancer, which is validated experimentally. Integration of deep learning prediction in DeepRescore2 improves phosphopeptide identification and facilitates biological discoveries.
 
 
 
-## Pipeline
 
-![DeepRescore2 pipeline](Image/Pipeline.png)
 
 ## Table of contents:
 
