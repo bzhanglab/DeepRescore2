@@ -10,6 +10,7 @@
 - [Directory structure of DeepRescore2](#directory-structure-of-deeprescore2)
 - [Customize environment for DeepRescore2](#customize-environment-for-deeprescore2)
   - [Our DeepRescore2 environment](#our-DeepRescore2-environment)
+  - [Computational Time](#computational-time)
   - [Installation](#installation)
   - [Data type](#data-type)
 - [Implement DeepRescore2](#implement-deeprescore2)
@@ -57,6 +58,12 @@ DeepRescore2
 ### Our DeepRescore2 environment
 - Windows 10 64bit. To meet the Docker Desktop requirements, the Windows system needs to be running Windows 10 Pro, Enterprise, or Home (18363+) as the operating system version.
 - Conda. We built three conda environments for AutoRT, pDeep3 and R, respectively, to meet the requirements of different environment verisons, e.g. tensorflow.
+
+### Computational Time
+- The computational time required by DeepRescore2 is dependent on various factors, such as the size of the dataset and the specific hardware configuration.
+- Due to the involvement of deep learning models, DeepRescore2 may require more computational time than traditional search engine + localization steps.
+- For the synthetic dataset, it took approximately 2 hours to complete the analysis using a Windows machine.
+- For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine.
 
 
 
