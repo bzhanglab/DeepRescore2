@@ -1,7 +1,0 @@
-name: spectral_entropy
-channels:
-  - defaults
-dependencies:
-  - numpy>=1.17.4
-  - scipy>=1.3.2
-  - cython>=0.29.13
