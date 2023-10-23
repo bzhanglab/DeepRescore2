@@ -31,6 +31,7 @@ DeepRescore2
 |---|---Features
 |---|---generate_train_prediction
 |---|---GenerateFeatureMatrix
+|---|---KinaseActivityScoreInference
 |---|---pDeep3
 |---|---Percolator
 |---|---PGA
