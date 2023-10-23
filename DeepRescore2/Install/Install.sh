@@ -3,9 +3,27 @@
 echo "Installing..."
 
 ##Parameter path
-DeepRescore2Path="E:/Project/DeepRescore2/Github/DeepRescore2"
-anacondaPath="/C/ProgramData/anaconda3"
+#DeepRescore2Path="E:/Project/DeepRescore2/Github/DeepRescore2"
+#anacondaPath="/C/ProgramData/anaconda3"
+#scriptPath="$DeepRescore2Path/Script"
+
+
+if [ -n "$1" ]; then
+    DeepRescore2Path="$1"
+else
+    echo "Please give DeepRescore2Path"
+    exit 1
+fi
+
+if [ -n "$2" ]; then
+    anacondaPath="$2"
+else
+    echo "Please give anacondaPath"
+    exit 2
+fi
+
 scriptPath="$DeepRescore2Path/Script"
+
 #=====================================Install==========================================#
 ##1.AutoRT
 

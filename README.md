@@ -52,7 +52,7 @@ DeepRescore2
 ```
 - **Script** implements DeepRescore2 to improve phosphopeptide identification and phosphosite localization.
 - **Parameters** include 9 parameter files for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively.
-- **Install** includes scripts for installing DeepRescore2, e.g., configuring the deep learning Conda environment, and installing R packages.
+- **Install** includes scripts for installing DeepRescore2, e.g., configuring the deep learning conda environment, and installing R packages.
 
 ## Customize environment for DeepRescore2
 ### Our DeepRescore2 environment
@@ -69,8 +69,33 @@ DeepRescore2
 - Download AutoRT and put it into the DeepRescore2 Script folder: DeepRescore2/Script.
 ```
 $ git clone https://github.com/bzhanglab/AutoRT.git
-$ move AutoRT DeepRescore2/Script
+$ mv AutoRT DeepRescore2/Script
 ```
+- Download pDeep3 and put it into the DeepRescore2 Script folder: DeepRescore2/Script/pDeep3.
+```
+$ git clone https://github.com/pFindStudio/pDeep3.git
+$ mv pDeep3 DeepRescore2/Script/pDeep3
+```
+- Download PhosphoRS and put it into the DeepRescore2 Script folder: DeepRescore2/Script/PhosphoRS.
+```
+$ https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip
+$ unzip phosphoRS-cli.zip -d phosphoRS-cli
+$ mv phosphoRS-cli DeepRescore2/Script/PhosphoRS
+```
+- Download SpectralEntropy and put it into the DeepRescore2 Script folder: DeepRescore2/Script/pDeep3.
+```
+$ git clone https://github.com/YuanyueLi/SpectralEntropy.git
+$ mv SpectralEntropy DeepRescore2/Script/pDeep3
+```
+- Install [Docker Desktop for Windows system](https://docs.docker.com/install/) (>=19.03).
+- Install [Anaconda for Windows system](https://www.anaconda.com/download) and get the Conda path (default is in /C/ProgramData/anaconda3).
+- Download the source code and install DeepRescore2 in your folder.
+```
+$ git clone https://github.com/bzhanglab/DeepRescore2.git
+$ cd DeepRescore2/Install
+$ ./Install.sh $DeepRescore2Path $AnacondaPath
+```
+
 
 
 ## Table of contents:
