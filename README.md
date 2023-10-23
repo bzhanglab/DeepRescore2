@@ -68,7 +68,7 @@ DeepRescore2
 - For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine.
 
 ### Installation
-- Download Git on the windows system： https://git-scm.com/downloads to run DeepRescore2 scripts.
+- Download Git on the windows system： https://git-scm.com/downloads to run DeepRescore2 command line.
 - Download the DeepRescore2 source code
 ```
 $ git clone https://github.com/bzhanglab/DeepRescore2.git
