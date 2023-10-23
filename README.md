@@ -100,11 +100,16 @@ $ ./Install.sh $DeepRescore2Path $AnacondaPath
 ```
 
 ### Data type
+- Instrument Type: The proposed approach, DeepRescore2, is designed to be applicable to mass spectrometry-based proteomics data obtained from various types of instruments, including but not limited to Orbitrap, Q-TOF, and ion trap instruments.
+- Peptide Type: DeepRescore2 is applicable to different types of peptides, including both labeled (e.g., TMT-labeled) and unlabeled peptides. However, it is important to note that DeepRescore2 is specifically designed to handle peptides with phosphorylation modification.
+- Computational Requirements: Currently, DeepRescore2 only supports running on Windows systems. The computational requirements for running DeepRescore2 depend on the size of the dataset and the specific hardware configuration. DeepRescore2 utilizes deep learning models, and the computational demands may increase with larger datasets. We recommend running DeepRescore2 on a machine with sufficient computational resources, such as a multi-core CPU and a GPU, to ensure efficient processing.
 
 ## Implement DeepRescore2
-### Directory structure of input
 
 ### Download example data
+- Please go to https://zenodo.org/records/7857446 and download **ExampleData.zip**. Then unzip this file as the folder **ExampleData**. This folder contains two label free datasets (PRIDE ID: PXD000138 and PXD023665) and one TMT datasets (UCEC) used in our manuscript. 
+
+### Directory structure of input
 
 ### Parameters of DeepRescore2
 
@@ -126,6 +131,7 @@ Xinpei Yi - [@yixinpei](https://twitter.com/yixinpei) - yixinpei13@gmail.com
 <br/>Lab Website: [bingzhang-Lab BCM](https://www.zhang-lab.org/)
 
 ## References
+If you find our work useful in your research or if you use parts of this code please consider citing our [paper](https://doi.org/10.1101/2023.01.11.523329):
 
 Yi, Xinpei, Wen Bo, Shuyi Ji, Alexander B. Saltzman, Eric J. Jaehnig, Jonathan T. Lei, Qiang Gao, and Bing Zhang (2023), **Deep learning prediction boosts phosphoproteomics-based discoveries through improved phosphopeptide identification**. *bioRxiv*. [doi:10.1101/2023.01.11.523329](https://doi.org/10.1101/2023.01.11.523329)
 
