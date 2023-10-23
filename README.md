@@ -112,9 +112,22 @@ $ ./Install.sh $DeepRescore2Path $AnacondaPath
 
 ## Other functions
 
+### Quantification for TMT dataset
+
+In our manuscript, we used [MASCI](https://github.com/PNNL-Comp-Mass-Spec/MASIC) to perform the TMT quantification for both TMT10 (UCEC) and TMT11 (HCC) datasets. We prepared the original scripts we used for the quantification under the 'Script/TMTQuantification' folder. You can change the input data path and parameters used for MASCI following our scripts to do the TMT quantification.
+
+### Kinase activity score inference
+In our manuscript, we performed kinase activity score inference for the HCC datasets. We prepared the original scripts we used under the 'Script/KinaseActivityScoreInference' folder. The excel file ('mmc4.xlsx') contains the list of known targets that we used for the inference. You can change the input data path and parameters to do the kinase activity score inference.
+
 ## Contact
 
+Xinpei Yi - [@yixinpei](https://twitter.com/yixinpei) - yixinpei13@gmail.com
+<br/>Project Link: [https://github.com/bzhanglab/DeepRescore2](https://github.com/bzhanglab/DeepRescore2)
+<br/>Lab Website: [bingzhang-Lab BCM](https://www.zhang-lab.org/)
+
 ## References
+
+Yi, Xinpei, Wen Bo, Shuyi Ji, Alexander B. Saltzman, Eric J. Jaehnig, Jonathan T. Lei, Qiang Gao, and Bing Zhang (2023), **Deep learning prediction boosts phosphoproteomics-based discoveries through improved phosphopeptide identification**. *bioRxiv*. [doi:10.1101/2023.01.11.523329](https://doi.org/10.1101/2023.01.11.523329)
 
 
 
