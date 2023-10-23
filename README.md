@@ -20,6 +20,8 @@
   - [Implement DeepRescore2 with scripts](#implement-deeprescore2-with-scripts)
 - [Output](#output)
 - [Other functions](#Other-functions)
+  - [Quantification for TMT dataset](#quantification-for-tmt-dataset)
+  - [Kinase activity score inference](#kinase-activity-score-inference) 
 - [Contact](#contact)
 - [References](#references)
 
