@@ -127,6 +127,136 @@ In order to perform DeepRescore2, the input dataset for DeepRescore2 must be pre
 |---|---|---SpectraN.raw
 |---|---features_matrix.txt
 ```
+- **Database** include the database sequence used for database searching.
+- **MGF** includes the MS/MS spectra (MGF format).
+- **RAW** includes the MS/MS spectra (RAW format).
+- **features_matrix.txt** is the path to the feature matrix which contains all the necessary features as follows:
+
+<table>
+  <tr>
+    <th rowspan="1">Feature groups</th>
+    <th>Feature name</th>
+    <th>Feature description</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Features based on deep learning</td>
+    <td>RT Ratio</td>
+    <td>RT ratio  between observed RT and predicted RT</td>
+  </tr>
+  <tr>
+    <td>Spectrum similarity</td>
+    <td>The spectral similarity characterized by entropy distance between predicted MS/MS spectrum and experimental MS/MS spectrum of a peptide</td>
+  </tr>
+  <tr>
+    <td rowspan="7">Search engine independent features</td>
+    <td>Mass_Error</td>
+    <td>Difference between theoretical and experimental mass</td>
+  </tr>
+  <tr>
+    <td>Charge</td>
+    <td>Peptide charge</td>
+  </tr>
+  <tr>
+    <td>Abs_Mass_Error</td>
+    <td>Absolute value of the difference between theoretical and experimental mass</td>
+  </tr>
+  <tr>
+    <td>Ln_Total_Intensity</td>
+    <td>Total intensity, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>Match_Ions_Intensity</td>
+    <td>Total intensity of matched ions, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>Max_Match_Ion_Intensity</td>
+    <td>Max intensity of matched fragment ions</td>
+  </tr>
+  <tr>
+    <td>Rel_Match_Ions_Intensity</td>
+    <td>The total intensity of all matched ions divided by the total intensity of the spectrum</td>
+  </tr>
+  <tr>
+    <td rowspan="5">Search engine specific features (Comet (2018.01 rev.4))</td>
+    <td>xcorr</td>
+    <td>Cross-correlation of the experimental and theoretical spectra</td>
+  </tr>
+  <tr>
+    <td>deltacn</td>
+    <td>The normalized difference of XCorr values between the best sequence and the next best sequence</td>
+  </tr>
+  <tr>
+    <td>spscore</td>
+    <td>The spscore of Comet</td>
+  </tr>
+  <tr>
+    <td>sprank</td>
+    <td>The sprank score of Comet</td>
+  </tr>
+  <tr>
+    <td>Ln_expect</td>
+    <td>Comet  Evalue, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Search engine specific features (MaxQuant (v1.6.5.0))</td>
+    <td>Score</td>
+    <td>Andromeda score</td>
+  </tr>
+  <tr>
+    <td>Ln-PEP</td>
+    <td>Posterior Error Probability of the identification, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>Delta_Score</td>
+    <td>Score difference to the second best identified peptide</td>
+  </tr>
+  <tr>
+    <td rowspan="4">Search engine specific features (MS-GF+ (v2019.02.28))</td>
+    <td>MS-GF:RawScore</td>
+    <td>Raw match score of MS-GF+</td>
+  </tr>
+  <tr>
+    <td>MS-GF:DeNovoScore</td>
+    <td>Maximum possible raw match score to this spectrum</td>
+  </tr>
+  <tr>
+    <td>MS-GF:SpecEValue</td>
+    <td>Negative MS-GF+ Spectral E Value, logged</td>
+  </tr>
+  <tr>
+    <td>Ln-MS-GF:EValue</td>
+    <td>Negative MS-GF+ E value, logged</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Search engine specific features (X!Tandem (v2017.2.1.2))</td>
+    <td>Ln-X!Tandem:expect</td>
+    <td>X!Tandem  Evalue, natural logarithm transformed</td>
+  </tr>
+  <tr>
+    <td>X!Tandem:hyperscore</td>
+    <td>X!Tandem hyperscore</td>
+  </tr>
+</table>
+
+We used PDV (PDV-1.6.1.beta.features-jar-with-dependencies.jar) attached under the 'Script/GenerateFeatureMatrix' folder to generate feature matrix. The script to run this jar file based on the Comet (2018.01 rev.4) identifications is as follows:
+
+```sh
+java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-with-dependencies.jar \
+  -r ./ExampleData/PXD023665/Comet.pep.xml \
+  -rt 2 \
+  -s ./ExampleData/Combined.mgf \
+  -st 1 \
+  -i * \
+  -k s \
+  -o . \
+  -a 0.02 \
+  -c 0 \
+  -decoy REV_ \
+  -ft pdf \
+  --features
+
+```
+
 
 ### Parameters of DeepRescore2
 
