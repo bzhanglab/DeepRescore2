@@ -61,7 +61,7 @@ DeepRescore2
 ## Customize environment for DeepRescore2
 ### Our DeepRescore2 environment
 - Windows 10 64bit. To meet the Docker Desktop requirements, the Windows system needs to be running Windows 10 Pro, Enterprise, or Home (18363+) as the operating system version.
-- Git. To provide command-line interface (CLI) for users to execute the workflow, the Git on Windows system needs to be installed.
+- [Git](https://git-scm.com/downloads). To provide command-line interface (CLI) for users to execute the workflow, the Git on Windows system needs to be installed.
 - Conda. We built three conda environments for [AutoRT](https://github.com/bzhanglab/AutoRT), [pDeep3](https://github.com/pFindStudio/pDeep3) and R, respectively, to meet the requirements of different environment verisons, e.g. tensorflow.
 
 ### Computational Time
