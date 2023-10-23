@@ -66,6 +66,10 @@ DeepRescore2
 - For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine.
 
 ### Installation
+- Download the DeepRescore2 source code
+```
+$ git clone https://github.com/bzhanglab/DeepRescore2.git
+```
 - Download AutoRT and put it into the DeepRescore2 Script folder: DeepRescore2/Script.
 ```
 $ git clone https://github.com/bzhanglab/AutoRT.git
@@ -89,9 +93,8 @@ $ mv SpectralEntropy DeepRescore2/Script/pDeep3
 ```
 - Install [Docker Desktop for Windows system](https://docs.docker.com/install/) (>=19.03).
 - Install [Anaconda for Windows system](https://www.anaconda.com/download) and get the Conda path (default is in /C/ProgramData/anaconda3).
-- Download the DeepRescore2 source code and install DeepRescore2 in your folder.
+- Install DeepRescore2 in your folder.
 ```
-$ git clone https://github.com/bzhanglab/DeepRescore2.git
 $ cd DeepRescore2/Install
 $ ./Install.sh $DeepRescore2Path $AnacondaPath
 ```
