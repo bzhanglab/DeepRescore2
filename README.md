@@ -16,7 +16,7 @@
 - [Implement DeepRescore2](#implement-deeprescore2)
   - [Download example data](#download-example-data)
   - [Directory structure of input](#directory-structure-of-input) 
-  - [Parameters of DeepRescore2](parameters-of-deeprescore2)
+  - [Parameters of DeepRescore2](#parameters-of-deeprescore2)
   - [Implement DeepRescore2 with scripts](#implement-deeprescore2-with-scripts)
 - [Output](#output)
 - [Other functions](#Other-functions)
