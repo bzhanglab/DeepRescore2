@@ -99,6 +99,23 @@ $ cd DeepRescore2/Install
 $ ./Install.sh $DeepRescore2Path $AnacondaPath
 ```
 
+### Data type
+
+## Implement DeepRescore2
+### Directory structure of input
+
+### Download example data
+
+### Parameters of DeepRescore2
+
+### Implement DeepRescore2 with scripts
+
+## Other functions
+
+## Contact
+
+## References
+
 
 
 ## Table of contents:
