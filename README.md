@@ -257,8 +257,28 @@ java -Xmx100g -jar ./Script/GenerateFeatureMatrix/PDV-1.6.1.beta.features-jar-wi
 
 ```
 
-
 ### Parameters of DeepRescore2
+Each column of the parameter file is described as follows (Please change the 'Value' column based on your data):
+| Name  | Value | Description |
+| -------------  | ------------- | ------------- |
+| DeepRescore2Path  | DEEPRESCORE2_DIR  | DeepRescore2 directory |
+| javaPath  | JAVA_DIR  | Java directory |
+| pythonPath  | PYTHON_DIR  | Python directory |
+| decoyPrefix  | DECOY_PREFIX  | Decoy prefix used for searching. Default is XXX_ |
+| searchEngine  | SEARCH_ENGINE  | Four search engines, msgf, comet, xtandem, maxquant, are supported |
+| inputPath  | INPUT_DIR  | Input directory including all the input files |
+| rawSpectraPath  | RAW_DIR  | Path to the MS/MS spectra (RAW) directory |
+| spectraPath  | MGF_DIR  | Path to the MS/MS spectra (MGF) directory |
+| databasePath  | DATABASE_DIR  | Path to the database used for searching |
+| inputFeaturePath  | FEATURE_DIR  | Path to the feature matrix |
+| outputPath  | OUT_DIR  | Output directory |
+| VariableMods  | VAR_MOD  | Variable modifications used for searching, e.g. '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2' |
+| FixedMods  | Fix_MOD  | Fixed modifications used for searching, e.g. '5,Carbamidomethyl,C,57.021464,3'. If null, use 'null' |
+| ModsReplace  | RENAME_MOD  | Some modifications need to rename, e.g. '[79.966331],Phospho'. If null, use 'null' |
+
+As a reference, we prepared 9 parameter files for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'Parameters' folder.
+
+
 
 ### Implement DeepRescore2 with scripts
 
@@ -281,6 +301,10 @@ Xinpei Yi - [@yixinpei](https://twitter.com/yixinpei) - yixinpei13@gmail.com
 If you find our work useful in your research or if you use parts of this code please consider citing our [paper](https://doi.org/10.1101/2023.01.11.523329):
 
 Yi, Xinpei, Wen Bo, Shuyi Ji, Alexander B. Saltzman, Eric J. Jaehnig, Jonathan T. Lei, Qiang Gao, and Bing Zhang (2023), **Deep learning prediction boosts phosphoproteomics-based discoveries through improved phosphopeptide identification**. *bioRxiv*. [doi:10.1101/2023.01.11.523329](https://doi.org/10.1101/2023.01.11.523329)
+
+
+
+
 
 
 
