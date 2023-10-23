@@ -3,7 +3,16 @@
 echo "DeepRescore2!"
 
 ##Parameter path
-param_path="E:/Project/DeepRescore2/Github/DeepRescore2/Parameters/PXD023665_comet.param"
+#param_path="E:/Project/DeepRescore2/Github/DeepRescore2/Parameters/PXD023665_comet.param"
+
+if [ -n "$1" ]; then
+    param_path="$1"
+else
+    echo "Please give parameter path"
+    exit 1
+fi
+
+
 #=======================================Step0: Preparation===========================#
 
 echo "Step0: Preparation"
