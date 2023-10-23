@@ -110,6 +110,23 @@ $ ./Install.sh $DeepRescore2Path $AnacondaPath
 - Please go to https://zenodo.org/records/7857446 and download **ExampleData.zip**. Then unzip this file as the folder **ExampleData**. This folder contains two label free datasets (PRIDE ID: PXD000138 and PXD023665) and one TMT datasets (UCEC) used in our manuscript. 
 
 ### Directory structure of input
+In order to perform DeepRescore2, the input dataset for DeepRescore2 must be prepared as follows.
+```
+|---Raw_input_directory
+|---|---Database
+|---|---|---Uniprot_Human.fasta
+|---|---MGF
+|---|---|---Spectra1.mgf
+|---|---|---Spectra2.mgf
+             ...
+|---|---|---SpectraN.mgf
+|---|---RAW
+|---|---|---Spectra1.raw
+|---|---|---Spectra2.raw
+             ...
+|---|---|---SpectraN.raw
+|---|---features_matrix.txt
+```
 
 ### Parameters of DeepRescore2
 
