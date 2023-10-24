@@ -72,28 +72,28 @@ DeepRescore2
 - For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine.
 
 ### Installation
-- Download Git on the windows system： https://git-scm.com/downloads to run DeepRescore2 command line.
+- Download Git on the windows system： https://git-scm.com/downloads to run DeepRescore2 command line. **Please install and run DeepRescore2 under git command line.**
 - Download the DeepRescore2 source code
 ```
 $ git clone https://github.com/bzhanglab/DeepRescore2.git
 ```
-- Download AutoRT and put it into the DeepRescore2 Script folder: DeepRescore2/Script.
+- Download AutoRT and move this whole folder into the DeepRescore2 Script folder: DeepRescore2/Script.
 ```
 $ git clone https://github.com/bzhanglab/AutoRT.git
 $ mv AutoRT DeepRescore2/Script
 ```
-- Download pDeep3 and put it into the DeepRescore2 Script folder: DeepRescore2/Script/pDeep3.
+- Download pDeep3 and move this whole folder into the DeepRescore2 Script/pDeep3 folder: DeepRescore2/Script/pDeep3.
 ```
 $ git clone https://github.com/pFindStudio/pDeep3.git
 $ mv pDeep3 DeepRescore2/Script/pDeep3
 ```
-- Download PhosphoRS and put it into the DeepRescore2 Script folder: DeepRescore2/Script/PhosphoRS.
+- Download PhosphoRS and move this whole folder into the DeepRescore2 Script/PhosphoRS folder: DeepRescore2/Script/PhosphoRS.
 ```
 $ https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip
 $ unzip phosphoRS-cli.zip -d phosphoRS-cli
 $ mv phosphoRS-cli DeepRescore2/Script/PhosphoRS
 ```
-- Download SpectralEntropy and put it into the DeepRescore2 Script folder: DeepRescore2/Script/pDeep3.
+- Download SpectralEntropy and move this whole folder into the DeepRescore2 Script/pDeep3 folder: DeepRescore2/Script/pDeep3.
 ```
 $ git clone https://github.com/YuanyueLi/SpectralEntropy.git
 $ mv SpectralEntropy DeepRescore2/Script/pDeep3
