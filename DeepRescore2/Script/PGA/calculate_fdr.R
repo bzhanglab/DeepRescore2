@@ -4,12 +4,12 @@ library(PGA)
 args <- commandArgs(T)
 folder_path <- args[1]
 sample <- args[2]
-database <- args[3]
-decoyPrefix <- args[4]
-better_score_lower <- args[5]
+#database <- args[3]
+decoyPrefix <- args[3]
+better_score_lower <- args[4]
 
 calculateFDR(psmfile=paste(folder_path, sample, "-rawPSMs.txt", sep=""),
-	db=database,
+	db='',
 	fdr=0.01,
 	decoyPrefix=decoyPrefix,
 	better_score_lower=better_score_lower,
@@ -20,7 +20,7 @@ calculateFDR(psmfile=paste(folder_path, sample, "-rawPSMs.txt", sep=""),
 	out_dir=paste(folder_path, "peptide_level", sep=""),
 	xmx=20)
 calculateFDR(psmfile=paste(folder_path, sample, "-rawPSMs.txt", sep=""),
-        db=database,
+        db='',
         fdr=0.01,
         decoyPrefix=decoyPrefix,
         better_score_lower=better_score_lower,

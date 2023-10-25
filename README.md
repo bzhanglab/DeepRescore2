@@ -120,8 +120,6 @@ $ ./Install/Install.sh . $AnacondaPath
 In order to perform DeepRescore2, the input dataset for DeepRescore2 must be prepared as follows.
 ```
 |---Raw_input_directory
-|---|---Database
-|---|---|---Uniprot_Human.fasta
 |---|---MGF
 |---|---|---Spectra1.mgf
 |---|---|---Spectra2.mgf
@@ -134,7 +132,6 @@ In order to perform DeepRescore2, the input dataset for DeepRescore2 must be pre
 |---|---|---SpectraN.raw
 |---|---features_matrix.txt
 ```
-- **Database** include the database sequence used for database searching.
 - **MGF** includes the MS/MS spectra (MGF format).
 - **RAW** includes the MS/MS spectra (RAW format).
 - **features_matrix.txt** is the path to the feature matrix which contains all the necessary features as follows:
@@ -276,7 +273,6 @@ Each column of the parameter file is described as follows (Please change the 'Va
 | inputPath  | INPUT_DIR  | Input directory including all the input files |
 | rawSpectraPath  | RAW_DIR  | Path to the MS/MS spectra (RAW) directory |
 | spectraPath  | MGF_DIR  | Path to the MS/MS spectra (MGF) directory |
-| databasePath  | DATABASE_DIR  | Path to the database used for searching |
 | inputFeaturePath  | FEATURE_DIR  | Path to the feature matrix |
 | outputPath  | OUT_DIR  | Output directory |
 | VariableMods  | VAR_MOD  | Variable modifications used for searching, e.g. '1,Oxidation,M,15.994919,1;2,Phospho,S,79.966331,2;3,Phospho,T,79.966331,2;4,Phospho,Y,79.966331,2' |

@@ -19,7 +19,7 @@ echo "Step0: Preparation"
 
 ##Read parameter file
 ###Parameters used for identification
-while read -r Name Value; do
+while read -r Name Value || [ -n "$Name" ]; do
   declare "$Name=$Value"
 done < "$param_path"
 scriptPath="$DeepRescore2Path/Script"
@@ -179,7 +179,6 @@ cd "$outputPath"
 Calculate_FDR_Command="$docker_Command ./PGA/calculate_fdr.R \
 \"./PGA/\" \
 \"pga\" \
-\"$databasePath\" \
 \"$decoyPrefix\" \
 \"FALSE\""
 eval "$Calculate_FDR_Command"
