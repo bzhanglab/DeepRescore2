@@ -286,6 +286,7 @@ Each column of the parameter file is described as follows (Please change the 'Va
 As a reference, we prepared 9 parameter files for the three test datasets of four search engines used in our manuscript, including label free dataset (PRIDE ID: PXD000138 and PXD023665) and UCEC TMT dataset, respectively. Please check the 'DeepRescore2/Parameters' folder.
 
 ### Implement DeepRescore2 with scripts
+- Open the DeepRescore2 Parameters folder and edit the parameters.
 - Open the DeepRescore2 Script folder and run DeepRescore2.
 ```
 $ cd DeepRescore2/Script
