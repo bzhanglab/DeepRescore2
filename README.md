@@ -114,7 +114,7 @@ $ ./Install/Install.sh . $AnacondaPath
 ## Implement DeepRescore2
 
 ### Download example data
-- Please go to https://zenodo.org/records/10039234 and download **ExampleData1.zip (Synthetic dataset, PXD000138)**, **ExampleData2.zip (Label free dataset, PXD023665)**, ExampleData3.zip (TMT dataset, UCEC). Then unzip this file as the folder **ExampleData** used in our manuscript. 
+- Please go to https://zenodo.org/records/10039234 and download **ExampleData1.zip (Synthetic dataset, PXD000138)**, **ExampleData2.zip (Label free dataset, PXD023665)**, **ExampleData3.zip (TMT dataset, UCEC)** used in our manuscript. Unzip these files used for DeepRescore2. 
 
 ### Directory structure of input
 In order to perform DeepRescore2, the input dataset for DeepRescore2 must be prepared as follows.
