@@ -72,10 +72,11 @@ DeepRescore2
 - For the UCEC TMT dataset, the analysis required approximately 9 hours to complete using a Windows machine.
 
 ### Installation
-- Download Git on the windows system： https://git-scm.com/downloads to run DeepRescore2 command line. **Please install and run DeepRescore2 under git command line.**
+- Download Git on the windows system： https://git-scm.com/downloads Right-click the mouse to open the Git Bash. **Please install and run DeepRescore2 under Git Bash.**
 - Download the DeepRescore2 source code
 ```
 $ git clone https://github.com/bzhanglab/DeepRescore2.git
+$ cd DeepRescore2
 ```
 - Download AutoRT and move this whole folder into the DeepRescore2 Script folder: DeepRescore2/Script.
 ```
@@ -87,7 +88,7 @@ $ mv AutoRT DeepRescore2/Script
 $ git clone https://github.com/pFindStudio/pDeep3.git
 $ mv pDeep3 DeepRescore2/Script/pDeep3
 ```
-- Download PhosphoRS and move this whole folder into the DeepRescore2 Script/PhosphoRS folder: DeepRescore2/Script/PhosphoRS.
+- Download phosphoRS-cli and move this whole folder into the DeepRescore2 Script/PhosphoRS folder: DeepRescore2/Script/PhosphoRS.
 ```
 $ https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip
 $ unzip phosphoRS-cli.zip -d phosphoRS-cli
@@ -102,8 +103,8 @@ $ mv SpectralEntropy DeepRescore2/Script/pDeep3
 - Install [Anaconda for Windows system](https://www.anaconda.com/download) and get the Conda path (default is in /C/ProgramData/anaconda3).
 - Install DeepRescore2 in your folder.
 ```
-$ cd DeepRescore2/Install
-$ ./Install.sh $DeepRescore2Path $AnacondaPath
+$ cd DeepRescore2
+$ ./Install/Install.sh . $AnacondaPath
 ```
 
 ### Data type
