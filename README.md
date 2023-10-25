@@ -89,8 +89,8 @@ $ git clone https://github.com/pFindStudio/pDeep3.git
 $ mv pDeep3 DeepRescore2/Script/pDeep3
 ```
 - Download phosphoRS-cli and move this whole folder into the DeepRescore2 Script/PhosphoRS folder: DeepRescore2/Script/PhosphoRS.
+PhosphoRS download [link](https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip)
 ```
-$ https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip
 $ unzip phosphoRS-cli.zip -d phosphoRS-cli
 $ mv phosphoRS-cli DeepRescore2/Script/PhosphoRS
 ```
@@ -115,7 +115,7 @@ $ ./Install/Install.sh . $AnacondaPath
 ## Implement DeepRescore2
 
 ### Download example data
-- Please go to https://zenodo.org/records/7857446 and download **ExampleData.zip**. Then unzip this file as the folder **ExampleData**. This folder contains two label free datasets (PRIDE ID: PXD000138 and PXD023665) and one TMT datasets (UCEC) used in our manuscript. 
+- Please go to https://zenodo.org/records/10039234 and download **ExampleData.zip**. Then unzip this file as the folder **ExampleData**. This folder contains two label free datasets (PRIDE ID: PXD000138 and PXD023665) and one TMT datasets (UCEC) used in our manuscript. 
 
 ### Directory structure of input
 In order to perform DeepRescore2, the input dataset for DeepRescore2 must be prepared as follows.
