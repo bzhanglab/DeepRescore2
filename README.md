@@ -267,8 +267,7 @@ Each column of the parameter file is described as follows (Please change the 'Va
 | Name  | Value | Description |
 | -------------  | ------------- | ------------- |
 | DeepRescore2Path  | DEEPRESCORE2_DIR  | DeepRescore2 directory |
-| javaPath  | JAVA_DIR  | Java directory |
-| pythonPath  | PYTHON_DIR  | Python directory |
+| anacondaPath  | ANACONDA_DIR  | Anaconda directory. Default is /C/ProgramData/anaconda3 |
 | decoyPrefix  | DECOY_PREFIX  | Decoy prefix used for searching. Default is XXX_ |
 | searchEngine  | SEARCH_ENGINE  | Four search engines, msgf, comet, xtandem, maxquant, are supported |
 | inputPath  | INPUT_DIR  | Input directory including all the input files |
