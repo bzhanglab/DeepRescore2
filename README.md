@@ -89,7 +89,8 @@ $ git clone https://github.com/pFindStudio/pDeep3.git
 $ mv pDeep3 DeepRescore2/Script/pDeep3
 ```
 - Download phosphoRS-cli and move this whole folder into the DeepRescore2 Script/PhosphoRS folder: DeepRescore2/Script/PhosphoRS.
-PhosphoRS download [link](https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip)
+
+**PhosphoRS download [link](https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip)**
 ```
 $ unzip phosphoRS-cli.zip -d phosphoRS-cli
 $ mv phosphoRS-cli DeepRescore2/Script/PhosphoRS
