@@ -115,7 +115,7 @@ if conda env list | grep -q $r_env; then
     echo "R_env environment already exists."
 else
     echo "Creating R_env environment..."
-    conda env create -f environment_R.yml --prefix $anacondaPath/envs/R_env
+    conda env create -f $DeepRescore2Path/Install/environment_R.yml --prefix $anacondaPath/envs/R_env
 
     echo "R_env environment created and activated."
 fi
