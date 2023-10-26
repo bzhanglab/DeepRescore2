@@ -105,6 +105,8 @@ $ mv SpectralEntropy DeepRescore2/Script/pDeep3
 $ cd DeepRescore2
 $ ./Install/Install.sh . $AnacondaPath
 ```
+**After installation, please double check whether AutoRT, pDeep3 and R_env conda environments is exist under the Anaconda environment folder (default is in C:\ProgramData\anaconda3\envs) or not.**
+
 
 ### Data type
 - Instrument Type: The proposed approach, DeepRescore2, is designed to be applicable to mass spectrometry-based proteomics data obtained from various types of instruments, including but not limited to Orbitrap, Q-TOF, and ion trap instruments.

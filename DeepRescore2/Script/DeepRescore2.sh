@@ -12,7 +12,6 @@ else
     exit 1
 fi
 
-
 #=======================================Step0: Preparation===========================#
 
 echo "Step0: Preparation"
@@ -22,6 +21,29 @@ echo "Step0: Preparation"
 while read -r Name Value || [ -n "$Name" ]; do
   declare "$Name=$Value"
 done < "$param_path"
+
+# Judge input data exist or not
+if ls "$spectraPath"/*.mgf 1> /dev/null 2>&1; then
+  echo "MGF files provided"
+else
+  echo "no MGF files, please provide!"
+  exit 1 
+fi
+
+if ls "$rawSpectraPath"/*.raw 1> /dev/null 2>&1; then
+  echo "RAW files provided"
+else
+  echo "no RAW files, please provide!"
+  exit 2 
+fi
+
+if [ -f "$inputFeaturePath" ]; then
+  echo "feature file provided"
+else
+  echo "no feature file, please provide"
+  exit 3
+fi
+
 scriptPath="$DeepRescore2Path/Script"
 phosphoRSPath="$scriptPath/PhosphoRS/phosphoRS-cli/phosphoRS.exe"
 pDeep3_modelPath="$scriptPath/pDeep3/PreTrainedPhosphoModel/transfer-phos-wb-QE.ckpt"
@@ -73,8 +95,6 @@ for folder in "${folders[@]}"; do
 done
 
 cat "$spectraPath"/*.mgf > "$outputPath/Combined.mgf"
-
-###Add information into feature table
 
 source $anacondaPath/etc/profile.d/conda.sh
 conda activate R_env
