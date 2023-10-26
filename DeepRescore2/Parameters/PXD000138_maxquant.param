@@ -3,7 +3,6 @@ DeepRescore2Path	E:/Project/DeepRescore2/test2/DeepRescore2/DeepRescore2
 anacondaPath	/C/ProgramData/anaconda3
 decoyPrefix	XXX_
 searchEngine	maxquant
-inputPath	E:/Project/DeepRescore2/test2/ExampleData1/PXD000138
 rawSpectraPath	E:/Project/DeepRescore2/test2/ExampleData1/PXD000138/RAW
 spectraPath	E:/Project/DeepRescore2/test2/ExampleData1/PXD000138/MGF
 inputFeaturePath	E:/Project/DeepRescore2/test2/ExampleData1/PXD000138/features_maxquant.txt

@@ -3,7 +3,6 @@ DeepRescore2Path	E:/Project/DeepRescore2/test2/DeepRescore2/DeepRescore2
 anacondaPath	/C/ProgramData/anaconda3
 decoyPrefix	REV_
 searchEngine	comet
-inputPath	E:/Project/DeepRescore2/test2/ExampleData2/PXD023665
 rawSpectraPath	E:/Project/DeepRescore2/test2/ExampleData2/PXD023665/RAW
 spectraPath	E:/Project/DeepRescore2/test2/ExampleData2/PXD023665/MGF
 inputFeaturePath	E:/Project/DeepRescore2/test2/ExampleData2/PXD023665/features_comet.txt

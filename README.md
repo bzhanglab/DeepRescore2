@@ -105,8 +105,7 @@ $ mv SpectralEntropy DeepRescore2/Script/pDeep3
 $ cd DeepRescore2
 $ ./Install/Install.sh . $AnacondaPath
 ```
-**After installation, please double check whether AutoRT, pDeep3 and R_env conda environments is exist under the Anaconda environment folder (default is in C:\ProgramData\anaconda3\envs) or not.**
-
+**After installation, please verify whether the AutoRT, pDeep3, and R_env conda environments exist in the Anaconda environment folder (typically located at C:\ProgramData\anaconda3\envs) or not.**
 
 ### Data type
 - Instrument Type: The proposed approach, DeepRescore2, is designed to be applicable to mass spectrometry-based proteomics data obtained from various types of instruments, including but not limited to Orbitrap, Q-TOF, and ion trap instruments.
@@ -272,7 +271,6 @@ Each column of the parameter file is described as follows (Please change the 'Va
 | anacondaPath  | ANACONDA_DIR  | Anaconda directory. Default is /C/ProgramData/anaconda3 |
 | decoyPrefix  | DECOY_PREFIX  | Decoy prefix used for searching. Default is XXX_ |
 | searchEngine  | SEARCH_ENGINE  | Four search engines, msgf, comet, xtandem, maxquant, are supported |
-| inputPath  | INPUT_DIR  | Input directory including all the input files |
 | rawSpectraPath  | RAW_DIR  | Path to the MS/MS spectra (RAW) directory |
 | spectraPath  | MGF_DIR  | Path to the MS/MS spectra (MGF) directory |
 | inputFeaturePath  | FEATURE_DIR  | Path to the feature matrix |
