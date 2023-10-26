@@ -35,14 +35,14 @@ if ls "$rawSpectraPath"/*.raw 1> /dev/null 2>&1; then
   echo "RAW files provided"
 else
   echo "no RAW files, please provide!"
-  exit 3 
+  exit 2 
 fi
 
 if ls "$spectraPath"/*.mgf 1> /dev/null 2>&1; then
   echo "MGF files provided"
 else
   echo "no MGF files, please provide!"
-  exit 2 
+  exit 3 
 fi
 
 if [ -f "$inputFeaturePath" ]; then
