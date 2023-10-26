@@ -24,12 +24,82 @@ done < "$param_path"
 
 # Judge input data exist or not
 
-if [ -d "$DeepRescore2Path/Script" ] && [ -d "$DeepRescore2Path/Script/AutoRT" ] && [ -d "$DeepRescore2Path/Script/DeepRelocalization" ] && [ -d "$DeepRescore2Path/Script/Features" ] && [ -d "$DeepRescore2Path/Script/generate_train_prediction" ] && [ -d "$DeepRescore2Path/Script/GenerateFeatureMatrix" ] && [ -d "$DeepRescore2Path/Script/KinaseActivityScoreInference" ] && [ -d "$DeepRescore2Path/Script/pDeep3" ] && [ -d "$DeepRescore2Path/Script/Percolator" ] && [ -d "$DeepRescore2Path/Script/PGA" ] && [ -d "$DeepRescore2Path/Script/PhosphoRS" ] && [ -d "$DeepRescore2Path/Script/TMTQuantification" ]; then
-    echo "DeepRescore2Path contains Script, and subdirectories."
-else
-    echo "DeepRescore2Path does not contain all required subdirectories or the DeepRescore2Path in parameter file is wrong！"
-    exit 1 
+missing_dirs=""
+
+if [ ! -d "$DeepRescore2Path/Script" ]; then
+    missing_dirs+="Script, "
 fi
+
+if [ ! -d "$DeepRescore2Path/Script/AutoRT" ]; then
+    missing_dirs+="AutoRT, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/DeepRelocalization" ]; then
+    missing_dirs+="DeepRelocalization, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/Features" ]; then
+    missing_dirs+="Features, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/generate_train_prediction" ]; then
+    missing_dirs+="generate_train_prediction, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/GenerateFeatureMatrix" ]; then
+    missing_dirs+="GenerateFeatureMatrix, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/KinaseActivityScoreInference" ]; then
+    missing_dirs+="KinaseActivityScoreInference, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/pDeep3/pDeep3" ]; then
+    missing_dirs+="pDeep3_pDeep3, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/pDeep3/SpectralEntropy" ]; then
+    missing_dirs+="SpectralEntropy, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/pDeep3" ]; then
+    missing_dirs+="pDeep3, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/Percolator" ]; then
+    missing_dirs+="Percolator, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/PGA" ]; then
+    missing_dirs+="PGA, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/PhosphoRS" ]; then
+    missing_dirs+="PhosphoRS, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/PhosphoRS/phosphoRS-cli" ]; then
+    missing_dirs+="phosphoRS-cli, "
+fi
+
+if [ ! -d "$DeepRescore2Path/Script/TMTQuantification" ]; then
+    missing_dirs+="TMTQuantification, "
+fi
+
+if [ -n "$missing_dirs" ]; then
+    missing_dirs="${missing_dirs%, }"  # 去除末尾的逗号和空格
+    echo "DeepRescore2Path is missing the following subdirectories: $missing_dirs"
+    exit 1
+else
+    echo "DeepRescore2Path contains Script and all subdirectories."
+fi
+
+#if [ -d "$DeepRescore2Path/Script" ] && [ -d "$DeepRescore2Path/Script/AutoRT" ] && [ -d "$DeepRescore2Path/Script/DeepRelocalization" ] && [ -d "$DeepRescore2Path/Script/Features" ] && [ -d "$DeepRescore2Path/Script/generate_train_prediction" ] && [ -d "$DeepRescore2Path/Script/GenerateFeatureMatrix" ] && [ -d "$DeepRescore2Path/Script/KinaseActivityScoreInference" ] && [ -d "$DeepRescore2Path/Script/pDeep3" ] && [ -d "$DeepRescore2Path/Script/Percolator" ] && [ -d "$DeepRescore2Path/Script/PGA" ] && [ -d "$DeepRescore2Path/Script/PhosphoRS" ] && [ -d "$DeepRescore2Path/Script/TMTQuantification" ]; then
+#    echo "DeepRescore2Path contains Script, and subdirectories."
+#else
+#    echo "DeepRescore2Path does not contain all required subdirectories or the DeepRescore2Path in parameter file is wrong！"
+#    exit 1 
+#fi
 
 if ls "$rawSpectraPath"/*.raw 1> /dev/null 2>&1; then
   echo "RAW files provided"
