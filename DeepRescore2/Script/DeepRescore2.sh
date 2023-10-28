@@ -18,8 +18,13 @@ echo "Step0: Preparation"
 
 ##Read parameter file
 ###Parameters used for identification
-while read -r Name Value || [ -n "$Name" ]; do
-  declare "$Name=$Value"
+
+while IFS=$'\t' read -r Name Value || [ -n "$Name" ]; do
+  
+    #echo "Name:$Name"
+    #echo "Value:$Value"
+    eval "$Name=\"$Value\""
+
 done < "$param_path"
 
 # Judge input data exist or not
@@ -87,39 +92,32 @@ if [ ! -d "$DeepRescore2Path/Script/TMTQuantification" ]; then
 fi
 
 if [ -n "$missing_dirs" ]; then
-    missing_dirs="${missing_dirs%, }"  # 去除末尾的逗号和空格
+    missing_dirs="${missing_dirs%, }" 
     echo "DeepRescore2Path is missing the following subdirectories: $missing_dirs"
-    exit 1
+    exit 2
 else
     echo "DeepRescore2Path contains Script and all subdirectories."
 fi
-
-#if [ -d "$DeepRescore2Path/Script" ] && [ -d "$DeepRescore2Path/Script/AutoRT" ] && [ -d "$DeepRescore2Path/Script/DeepRelocalization" ] && [ -d "$DeepRescore2Path/Script/Features" ] && [ -d "$DeepRescore2Path/Script/generate_train_prediction" ] && [ -d "$DeepRescore2Path/Script/GenerateFeatureMatrix" ] && [ -d "$DeepRescore2Path/Script/KinaseActivityScoreInference" ] && [ -d "$DeepRescore2Path/Script/pDeep3" ] && [ -d "$DeepRescore2Path/Script/Percolator" ] && [ -d "$DeepRescore2Path/Script/PGA" ] && [ -d "$DeepRescore2Path/Script/PhosphoRS" ] && [ -d "$DeepRescore2Path/Script/TMTQuantification" ]; then
-#    echo "DeepRescore2Path contains Script, and subdirectories."
-#else
-#    echo "DeepRescore2Path does not contain all required subdirectories or the DeepRescore2Path in parameter file is wrong！"
-#    exit 1 
-#fi
 
 if ls "$rawSpectraPath"/*.raw 1> /dev/null 2>&1; then
   echo "RAW files provided"
 else
   echo "no RAW files, please provide!"
-  exit 2 
+  exit 3 
 fi
 
 if ls "$spectraPath"/*.mgf 1> /dev/null 2>&1; then
   echo "MGF files provided"
 else
   echo "no MGF files, please provide!"
-  exit 3 
+  exit 4 
 fi
 
 if [ -f "$inputFeaturePath" ]; then
   echo "feature file provided"
 else
   echo "no feature file, please provide"
-  exit 4
+  exit 5
 fi
 
 
