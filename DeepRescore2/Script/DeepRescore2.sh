@@ -271,7 +271,7 @@ eval "$GeneratePGAInput_Command"
 conda deactivate
 
 echo "Step2.2: Docker run PGA"
-docker_Command="docker run -it --rm -v $outputPath:/opt/ -t proteomics/pga:latest Rscript"
+docker_Command="docker run --rm -v $outputPath:/opt/ -t proteomics/pga:latest Rscript"
 cp "$scriptPath/PGA/calculate_fdr.R" "$PGAPath/"
 cd "$outputPath"
 Calculate_FDR_Command="$docker_Command ./PGA/calculate_fdr.R \
@@ -410,7 +410,7 @@ eval "$GeneratePercolatorInput_Command"
 conda deactivate
 
 echo "Step 7.3: Run Percolator"
-docker_Command="docker run -it --rm -v $outputPath/:/data/ -t bzhanglab/percolator:3.4 percolator"
+docker_Command="docker run --rm -v $outputPath/:/data/ -t bzhanglab/percolator:3.4 percolator"
 Percolator_Command="$docker_Command ./Percolator/DeepRescore2.pin -r ./Percolator/DeepRescore2/DeepRescore2.pep.txt -m ./Percolator/DeepRescore2/DeepRescore2.psms.txt -w ./Percolator/DeepRescore2/DeepRescore2.weights.txt -M ./Percolator/DeepRescore2/DeepRescore2.decoy.psms.txt"
 eval "$Percolator_Command"
 
