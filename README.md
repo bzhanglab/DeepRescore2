@@ -17,7 +17,7 @@
   - [Download example data](#download-example-data)
   - [Directory structure of input](#directory-structure-of-input) 
   - [Parameters of DeepRescore2](#parameters-of-deeprescore2)
-  - [Implement DeepRescore2 with scripts](#implement-deeprescore2-with-scripts)
+  - [Run DeepRescore2](#run-deeprescore2)
 - [Output](#output)
 - [Other functions](#Other-functions)
   - [Quantification for TMT dataset](#quantification-for-tmt-dataset)
