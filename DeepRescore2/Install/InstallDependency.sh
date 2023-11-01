@@ -24,6 +24,26 @@ fi
 
 scriptPath="$DeepRescore2Path/Script"
 
+#====================================Download==========================================#
+##1. AutoRT
+
+git clone https://github.com/bzhanglab/AutoRT.git
+mv AutoRT $DeepRescore2Path/Script
+
+##2. pDeep3
+git clone https://github.com/pFindStudio/pDeep3.git
+mv pDeep3 $DeepRescore2Path/Script/pDeep3
+
+##3. PhosphoRS
+curl -o phosphoRS-cli.zip -LJ https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip
+unzip phosphoRS-cli.zip -d phosphoRS-cli
+mv phosphoRS-cli $DeepRescore2Path/Script/PhosphoRS
+rm phosphoRS-cli.zip
+
+##4. SpectralEntropy
+git clone https://github.com/YuanyueLi/SpectralEntropy.git
+mv SpectralEntropy $DeepRescore2Path/Script/pDeep3
+
 #=====================================Install==========================================#
 ##1.AutoRT
 

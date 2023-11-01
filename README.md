@@ -73,37 +73,13 @@ DeepRescore2
 
 ### Installation
 - Download Git on the windows system： https://git-scm.com/downloads Right-click the mouse to open the Git Bash. **Please install and run DeepRescore2 under Git Bash as an administrator.**
-- Download the DeepRescore2 source code
+- Install [Docker Desktop for Windows system](https://docs.docker.com/install/) (>=19.03).
+- Install [Anaconda for Windows system](https://www.anaconda.com/download) and get the Conda path (default is in /C/ProgramData/anaconda3).
+- Download and install DeepRescore2 in your folder.
 ```
 $ git clone https://github.com/bzhanglab/DeepRescore2.git
 $ cd DeepRescore2
-```
-- Download AutoRT and move this whole folder into the DeepRescore2 Script folder: DeepRescore2/Script.
-```
-$ git clone https://github.com/bzhanglab/AutoRT.git
-$ mv AutoRT DeepRescore2/Script
-```
-- Download pDeep3 and move this whole folder into the DeepRescore2 Script/pDeep3 folder: DeepRescore2/Script/pDeep3.
-```
-$ git clone https://github.com/pFindStudio/pDeep3.git
-$ mv pDeep3 DeepRescore2/Script/pDeep3
-```
-- Download phosphoRS-cli (download [link](https://github.com/lmsac/phosphoRS-cli/releases/download/v1.0.0/phosphoRS-cli.zip)) and move this whole folder into the DeepRescore2 Script/PhosphoRS folder: DeepRescore2/Script/PhosphoRS.
-```
-$ unzip phosphoRS-cli.zip -d phosphoRS-cli
-$ mv phosphoRS-cli DeepRescore2/Script/PhosphoRS
-```
-- Download SpectralEntropy and move this whole folder into the DeepRescore2 Script/pDeep3 folder: DeepRescore2/Script/pDeep3.
-```
-$ git clone https://github.com/YuanyueLi/SpectralEntropy.git
-$ mv SpectralEntropy DeepRescore2/Script/pDeep3
-```
-- Install [Docker Desktop for Windows system](https://docs.docker.com/install/) (>=19.03).
-- Install [Anaconda for Windows system](https://www.anaconda.com/download) and get the Conda path (default is in /C/ProgramData/anaconda3).
-- Install DeepRescore2 in your folder.
-```
-$ cd DeepRescore2
-$ ./Install/Install.sh . $AnacondaPath
+$ ./Install/InstallDependency.sh . $AnacondaPath
 ```
 **After installation, please verify whether the AutoRT, pDeep3, and R_env conda environments exist in the Anaconda environment folder (typically located at C:\ProgramData\anaconda3\envs) or not.**
 
