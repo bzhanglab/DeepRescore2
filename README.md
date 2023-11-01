@@ -51,7 +51,7 @@ DeepRescore2
 |---|---UCEC_msgf.param
 |---|---UCEC_xtandem.param
 |---Install
-|---|---Install.sh
+|---|---InstallDependency.sh
 |---|---environment_R.yml
 ```
 - **Script** implements DeepRescore2 to improve phosphopeptide identification and phosphosite localization.
