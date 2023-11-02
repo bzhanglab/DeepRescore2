@@ -13,7 +13,7 @@
   - [Computational Time](#computational-time)
   - [Installation](#installation)
   - [Data type](#data-type)
-- [Implement DeepRescore2](#implement-deeprescore2)
+- [Usage](#usage)
   - [Download example data](#download-example-data)
   - [Directory structure of input](#directory-structure-of-input) 
   - [Parameters of DeepRescore2](#parameters-of-deeprescore2)
@@ -89,7 +89,7 @@ $ ./Install/InstallDependency.sh . $AnacondaPath
 - The current version supports four search engines, [MS-GF+ (v2019.02.28)](https://github.com/MSGFPlus/msgfplus), [Comet (2018.01 rev.4)](http://comet-ms.sourceforge.net/), [X!Tandem (v2017.2.1.2)](https://www.thegpm.org/TANDEM/), and [MaxQuant (v1.6.5.0)](https://maxquant.org/).
 - Computational Requirements: Currently, DeepRescore2 only supports running on Windows systems. The computational requirements for running DeepRescore2 depend on the size of the dataset and the specific hardware configuration. DeepRescore2 utilizes deep learning models, and the computational demands may increase with larger datasets. We recommend running DeepRescore2 on a machine with sufficient computational resources, such as a multi-core CPU and a GPU, to ensure efficient processing.
 
-## Implement DeepRescore2
+## Usage
 
 ### Download example data
 - Please go to https://zenodo.org/records/10049730 and download **ExampleData1.zip (Synthetic dataset, PXD000138)**, **ExampleData2.zip (Label free dataset, PXD023665)**, **ExampleData3.zip (TMT dataset, UCEC)** used in our manuscript. Unzip these files as the input for DeepRescore2. 
